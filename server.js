@@ -23,7 +23,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-//jba. 
+//jba 
 port= (process.env.PORT || 5000);
 app.set('port', port);
 /**
