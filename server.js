@@ -23,10 +23,10 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-//jba: changer port en 5000
 //const port = '9484';
 //app.set('port', port);
-app.set('port', (process.env.PORT || 5000));
+port= (process.env.PORT || 5000);
+app.set('port', port);
 /**
  * Create HTTP server.
  */
