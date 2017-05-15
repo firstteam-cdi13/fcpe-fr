@@ -21,9 +21,8 @@
 		<header>		
 			<div class="row">
   				<div class="col-md-9">
-					<div class="logo">&nbsp;</div>
 					<h1>
-						FCPE<br />
+						<img src="resources/img/logo-imie.png"/>&nbsp;FCPE<br/>
 						<span>Préparation des conseils de classe</span>
 					</h1>
 				</div>
@@ -83,65 +82,53 @@
 			<ol class="breadcrumb">
 			  <li><a href="#">Accueil</a></li>
 			  <li><a href="#">Gestion des campagnes</a></li>
-			  <li class="active">Rechercher une campagne</li>
+			  <li class="active">Editer une campagne</li>
 			</ol>
 		
-			<div class="row">
-	  			
+			<div class="row">	  			
 	  			<div class="col-md-10">
 					<section id="campagne" >
-						<h2>Titre Page</h2>
+						<h2>Campagne</h2>
 					
 						<div class="panel panel-default">
 							<div class="panel-heading">
 			    				<h3 class="panel-title">Propriétés d'une campagne</h3>
 			  				</div>
-			  				<div class="panel-body">
-			  									
-								<div class="">
-									<label class="col-sm-2 control-label">Nom</label>
-									<div class="col-sm-8">Campagne 1</div>
+			  				<div class="panel-body form-horizontal">			  									
+								<div class="form-group">
+									<label class="col-md-2 control-label">Nom</label>
+									<div class="col-md-10">Campagne 1</div>
 								</div>								
 								
-								<div class="">
-									<label class="col-sm-2 control-label">Debut</label>
-									<div class="col-sm-8">02/01/2017</div>
+								<div class="form-group">
+									<label class="col-md-2 control-label">Debut</label>
+									<div class="col-md-4">02/01/2017</div>
+									<label class="col-md-2 control-label">Fin</label>
+									<div class="col-md-4">02/03/2017</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 control-label">Fin</label>
-									<div class="col-sm-8">02/03/2017</div>
+									<label class="col-md-2 control-label">Classe</label>
+									<div class="col-md-10">6ème D</div>
 								</div>
 								
 								<div class="form-group">
-									<label class="col-sm-2 control-label">Classe</label>
-									<div class="col-sm-8">6ème D</div>
+									<label class="col-md-2 control-label">Conseil</label>
+									<div class="col-md-4">3ème Trimestre</div>
+									<label class="col-md-2 control-label">Date de Conseil</label>
+									<div class="col-md-4">25/03/2017</div>
 								</div>
 								
-								<div class="form-group">
-									<label class="col-sm-2 control-label">Conseil</label>
-									<div class="col-sm-8">3ème Trimestre</div>
+								<div class="btn-group col-md-offset-10 col-md-2">									
+									<button class="btn btn-primary" data-toggle="modal" data-target="#editerCampagne"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Modifier</button>
 								</div>
-								<div class="form-group">
-									<label class="col-sm-2 control-label">Date de Conseil</label>
-									<div class="col-sm-8">25/03/2017</div>
-								</div>
-																	
-								<div class="btn-group col-md-offset-8 col-sm-2">
-									<button class="btn btn-primary" data-toggle="modal" data-target="#editerCampagne"><span class="glyphicon glyphicon-pencil"></span></button>
-								</div>
+																
 							</div>
-						</div>
-						
-						<div class="panel panel-default">
-							<div class="panel-heading">
-			    				<h2 class="panel-title">(x) question(s)</h2>
-			  				</div>
-			  				<div class="panel-body">
-								<p>
-								<div class="table-responsive">
-									<table class="table table-striped table-hover">						
+														
+							<div class="table-responsive">
+								<table class="table table-striped table-hover">						
 									<thead>
 										<tr>
+											<th>Ordre</th>
 											<th>Intitulé<br/>Principal / Secondaire</th>
 											<th>Type de Propositions</th>
 											<th>Local</th>
@@ -152,6 +139,7 @@
 									</thead>
 									<tbody>
 										<tr>
+											<td>1</td>
 											<td>
 												1: Avez-vous une Question ?
 												<br/>
@@ -164,11 +152,12 @@
 											<td>
 												<div class="btn-group">													
 													<button class="btn btn-primary" data-toggle="modal" data-target="#editerQuestion"><span class="glyphicon glyphicon-zoom-in"></span></button>
-													<button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerCampagne"><span class="glyphicon glyphicon-remove"></span></button>
+													<button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerQuestion"><span class="glyphicon glyphicon-remove"></span></button>
 												</div>
 											</td>
 										</tr>
 										<tr>
+											<td>2</td>
 											<td>Avez-vous une autre question  ?</td>
 											<td>Texte libre</td>
 											<td>Générique</td>
@@ -177,11 +166,12 @@
 											<td>
 												<div class="btn-group">
 													<button class="btn btn-primary" data-toggle="modal" data-target="#editerQuestion"><span class="glyphicon glyphicon-zoom-in"></span></button>											
-													<button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerCampagne"><span class="glyphicon glyphicon-remove"></span></button>
+													<button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerQuestion"><span class="glyphicon glyphicon-remove"></span></button>
 												</div>
 											</td>
 										</tr>
 										<tr>
+											<td>3</td>
 											<td>&nbsp;</td>
 											<td></td>
 											<td></td>
@@ -190,36 +180,59 @@
 											<td colspan="2"></td>
 										</tr>
 										<tr>
+											<td></td>
 											<td>&nbsp;</td>
 											<td></td>
 											<td></td>
 											<td></td>
 											<td></td>					
 											<td colspan="2"></td>
-										</tr>
-										<tr>
-											<td>&nbsp;</td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>					
-											<td colspan="2"></td>
-										</tr>											
+										</tr>																				
 									</tbody>
 									<tfoot>								
 									</tfoot>
 								</table>
 							</div>
-					
-							</p>
-								
+							
+							<div class="panel-footer">
+								<div class="col-md-2">
+									<button class="btn btn-success" data-toggle="modal" data-target="#editerQuestion">
+										<span class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter question
+									</button>
+								</div>
+								<div class="col-md-offset-6 col-md-2">
+									<p>(x) question(s)</p>
+								</div>												
 							</div>
+							
 						</div>
+						
 					</section>			
 				</div>
 				
 				<div class="col-md-2">
-					<p>Aide en ligne ...</p>
+					<aside>
+						<div class="panel-group">
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+			    				<h3 class="panel-title">Aide en ligne</h3>
+			  				</div>
+						    <div class="panel-body">
+						    	<p>Aide contextuelle</p>
+						    </div>
+						  </div>
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+			    				<h3 class="panel-title">Favoris</h3>
+			  				</div>
+							<div class="list-group">
+							  <a href="#" class="list-group-item"><span class="glyphicon glyphicon-star"></span>&nbsp;First item</a>
+							  <a href="#" class="list-group-item"><span class="glyphicon glyphicon-star"></span>&nbsp;Second item</a>
+							  <a href="#" class="list-group-item"><span class="glyphicon glyphicon-star"></span>&nbsp;Third item</a>
+							</div>
+						  </div>
+						</div>							
+					</aside>
 				</div>
 				
 			</div>
@@ -229,7 +242,7 @@
 		<!-- Footer -->
 		<footer>
 			<div class="row">
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                <div class="col-lg-2  col-md-2 col-md-4 col-xs-6">
                     <h3>Gestion des campagnes</h3>
 					<ul>
 						<li><a href="./maquette-ECR4b.html">Créer une campagne</a></li>
@@ -238,7 +251,7 @@
 						<li><a href="#">Visualiser les résultats</a></li>
 					</ul>
                 </div>
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                <div class="col-lg-2  col-md-2 col-md-4 col-xs-6">
                     <h3>Gestion des classes</h3>
 					<ul>
 						<li><a href="#">Gérer les établissements</a></li>
@@ -247,7 +260,7 @@
 						<li><a href="#">Importer les élèves</a></li>
 					</ul>
                 </div>
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                <div class="col-lg-2  col-md-2 col-md-4 col-xs-6">
                     <h3>Gestion des utilisateurs</h3>
                 </div>
           	</div>
@@ -256,16 +269,18 @@
 			<p>&copy; 2017 First Team CDI13. All rights reserved.</p>
 		</footer>
 		
-		<!-- Boite Modale -->
-		<div class="modal fade" id="confirmerSupprimerCampagne" role="dialog">
+		<!-- Boite Modale : confirmerSupprimerQuestion -->
+		<div class="modal fade" id="confirmerSupprimerQuestion" role="dialog">
 		    <div class="modal-dialog modal-lg">
 		      <div class="modal-content">
 		        <div class="modal-header">
 		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title">Suppression Campagne</h4>
+		          <h4 class="modal-title">Suppression Question</h4>
 		        </div>
 		        <div class="modal-body">
-		          <p>Confirmez-vous la suppression de la campagne "Campagne 1" ?</p>
+		          <p>Confirmez-vous la suppression de la question suivante ?<br/><br/>
+		          	"Votre enfant est-il adorable ?"		          	
+		          </p>
 		        </div>
 		        <div class="modal-footer">
 		        	<div class="btn-group">
@@ -277,6 +292,7 @@
 		    </div>
 		  </div>
 		  
+		  <!-- Boite Modale : editerCampagne -->
 		  <div class="modal fade" id="editerCampagne" role="dialog">
 		    <div class="modal-dialog modal-lg">
 		      <div class="modal-content">
@@ -285,28 +301,28 @@
 		          <h4 class="modal-title">Editer Campagne</h4>
 		        </div>
 		        <div class="modal-body">
-		          <form action="#" method="post">
+		          <form action="#" method="post" class="form-horizontal">
 						<div class="form-group">
-							<label for="campagne.nom" class="col-sm-2 control-label">Nom</label>
-							<div class="col-sm-10">	
+							<label for="campagne.nom" class="col-md-2 control-label">Nom</label>
+							<div class="col-md-10">	
 								<input type="text" class="form-control" id="campagne.nom" name="campagne.nom" placeholder="Saisissez un nom">
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label for="campagne.datedebut" class="col-sm-2 control-label">Debut</label>
-							<div class="col-sm-4">	
+							<label for="campagne.datedebut" class="col-md-2 control-label">Debut</label>
+							<div class="col-md-4">	
 								<input type="date" class="form-control" id="campagne.datedebut" name="campagne.datedebut" placeholder="Saisissez une date de début">
 							</div>
-							<label for="campagne.datefin" class="col-sm-2 control-label">Fin</label>
-							<div class="col-sm-4">	
+							<label for="campagne.datefin" class="col-md-2 control-label">Fin</label>
+							<div class="col-md-4">	
 								<input type="date" class="form-control" id="campagne.datefin" name="campagne.datefin" placeholder="Saisissez une date de fin">
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label for="campagne.classe" class="col-sm-2 control-label">Classe</label>
-							<div class="col-sm-10">
+							<label for="campagne.classe" class="col-md-2 control-label">Classe</label>
+							<div class="col-md-4">
 								<select id="campagne.classe" name="campagne.classe" class="form-control">
 									<option value="0" selected="selected" >Sélectionnez une classe</option>
 									<option value="1" >6ème D</option>
@@ -316,8 +332,8 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="campagne.conseil" class="col-sm-2 control-label">Conseil</label>
-							<div class="col-sm-4">
+							<label for="campagne.conseil" class="col-md-2 control-label">Conseil</label>
+							<div class="col-md-4">
 								<select id="campagne.conseil" name="campagne.conseil" class="form-control">
 									<option value="0" selected="selected" >Sélectionnez un conseil de classe</option>
 									<option value="1" >1er Trimestre</option>
@@ -325,8 +341,8 @@
 									<option value="3" >3ème Trimestre</option>
 								</select>
 							</div>
-							<label for="campagne.dateconseil" class="col-sm-2 control-label">Date de Conseil</label>
-							<div class="col-sm-4">	
+							<label for="campagne.dateconseil" class="col-md-2 control-label">Date de Conseil</label>
+							<div class="col-md-4">	
 								<input type="date" class="form-control" id="campagne.dateconseil" name="campagne.dateconseil" placeholder="Saisissez une date de conseil">
 							</div>
 						</div>
@@ -343,6 +359,7 @@
 		    </div>
 		  </div>
 		  
+		  <!-- Boite Modale : editerQuestion -->
 		  <div class="modal fade" id="editerQuestion" role="dialog">
 		    <div class="modal-dialog modal-lg">
 		      <div class="modal-content">
@@ -351,47 +368,93 @@
 		          <h4 class="modal-title">Editer une question</h4>
 		        </div>
 		        <div class="modal-body">
-		        	<p>
-		          	<form action="campagne/rechercher" method="post">
+		          	<form action="campagne/rechercher" method="post" class="form-horizontal">
 						
 						<div class="form-group">
-							<label for="question.intitule1" class="col-sm-2 control-label">Intitulé principal</label>
-							<div class="col-sm-10">	
+							<label for="question.intitule1" class="col-md-2 control-label">Intitulé principal</label>
+							<div class="col-md-10">	
 								<input type="text" class="form-control" id="question.intitule1" name="question.intitule1" placeholder="Saisissez une question">
 							</div>
 						</div>						
 						<div class="form-group">
-							<label for="question.intitule2" class="col-sm-2 control-label">Intitulé secondaire</label>
-							<div class="col-sm-10">	
+							<label for="question.intitule2" class="col-md-2 control-label">Intitulé secondaire</label>
+							<div class="col-md-10">	
 								<input type="text" class="form-control" id="question.intitule2" name="question.intitule2" placeholder="Saisissez une question secondaire">
 							</div>
-						</div>						
+						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">Statut</label>
-							<div class="col-sm-10">
-								<label for="question.statut.inactive" class="radio-inline">
-									<input type="radio" class="form-control" id="question.statut.inactive" name="question.statut" value="0">Inactif</label>
-								<label for="question.statut.active" class="radio-inline">
-									<input type="radio" class="form-control" id="question.statut.active" name="question.statut" value="1" checked>Actif</label>
+							<label class="col-md-2 control-label">Origine</label>
+							<div class="col-md-3">
+								<label for="question.origine.general" class="radio-inline">
+									<input type="radio" id="question.origine.general" name=""question.origine"" value="0">Général</label>
+								<label for="question.origine.local" class="radio-inline">
+									<input type="radio" id="question.origine.local" name="question.origine" value="1" checked>Local</label>
 							</div>
-						</div>						
-						<div class="form-group">
-							<label class="col-sm-2 control-label">Obligatoire</label>
-							<div class="col-sm-10">
+							<label class="col-md-2 control-label">Aide</label>
+							<div class="col-md-3">
+								<textarea class="form-control" id="question.aide" name="question.aide" rows="4" placeholder="Saisissez un texte d'aide"></textarea>
+							</div>
+						</div>
+						<div class="form-group">							
+							<label class="col-md-2 control-label">Obligatoire</label>
+							<div class="col-md-3">
 								<label for="question.obligatoire.non" class="radio-inline">
-									<input type="radio" class="form-control"  id="question.obligatoire.non" name="question.obligatoire" value="0">Non</label>
+									<input type="radio" id="question.obligatoire.non" name="question.obligatoire" value="0">Non</label>
 								<label for="question.obligatoire.oui" class="radio-inline">
-									<input type="radio" class="form-control" id="question.obligatoire.oui" name="question.obligatoire" value="1" checked>Oui</label>
+									<input type="radio" id="question.obligatoire.oui" name="question.obligatoire" value="1" checked>Oui</label>
+							</div>
+							<label class="col-md-2 control-label">Statut</label>
+							<div class="col-md-3">
+								<label for="question.statut.inactive" class="radio-inline">
+									<input type="radio" id="question.statut.inactive" name="question.statut" value="0">Inactif</label>
+								<label for="question.statut.active" class="radio-inline">
+									<input type="radio" id="question.statut.active" name="question.statut" value="1" checked>Actif</label>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">Aide</label>
-							<div class="col-sm-10">
-								<textarea id="question.aide" name="question.aide" placeholder="Saisissez un texte d'aide"></textarea>
+							<label class="col-md-2 control-label">Type</label>
+							<div class="col-md-10">
+								<label for="question.type.libre" class="radio-inline">
+									<input type="radio" id="question.type.libre" name="question.type" value="0">Texte Libre</label>
+								<label for="question.type.unique" class="radio-inline">
+									<input type="radio" id="question.type.unique" name="question.type" value="1" checked>Choix Unique</label>
+								<label for="question.type.multiple" class="radio-inline">
+									<input type="radio" id="question.type.multiple" name="question.type" value="2" checked>Choix Multiple</label>
 							</div>
 						</div>
+						<div class="form-group">
+							<label class="col-md-2 control-label">Propositions</label>
+							<div class="col-md-4">
+								<input list="propositions" class="form-control" id="question.proposition" name="question.proposition" placeholder="Saisissez une question proposition">
+								<datalist id="propositions">
+								  <option value="Oui">
+								  <option value="Non">
+								  <option value="Bon">
+								  <option value="Moyen">
+								  <option value="Mauvais">
+								</datalist>
+							</div>
+							<div class="col-md-1">
+								<button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-plus"></span></button>				          		
+							</div>
+							<div class="col-md-4">
+								<div class="list-group">
+								  <a href="#" class="list-group-item active">First item</a>
+								  <a href="#" class="list-group-item">Second item</a>
+								  <a href="#" class="list-group-item">Third item</a>
+								</div>
+							</div>
+							<div class="col-md-1">
+								<button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-chevron-up"></span></button>
+								<br/>
+				          		<button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-minus"></span></button>
+				          		<br/>
+				          		<button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-chevron-down"></span></button>
+							</div>
+						</div>
+						
+												
 					</form>
-		          </p>
 		        </div>
 		        <div class="modal-footer">
 		        	<div class="btn-group">
