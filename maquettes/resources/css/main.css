@@ -1,0 +1,141 @@
+@CHARSET "UTF-8";
+
+/* line 6, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+body {
+  background: #FFFFFF;
+  /*font-family: 'Chelsea Market', cursive;*/
+  font-family: 'Hind', sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 14, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+h1 span {
+  font-size: 0.6em;
+  font-style: italic;
+  font-variant: small-caps;
+}
+
+/* line 19, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+.logo {
+  background: url("../img/david-1024.jpg") no-repeat scroll 0 0 transparent;
+  width: 100px;
+  height: 100px;
+  background-color: #ededed;
+  border-radius: 100px;
+}
+
+/* line 26, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+header {
+  padding-left: 120px;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+}
+
+/* line 32, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+section {
+  color: white;
+  margin: 0;
+  padding-bottom: 80px;
+  padding-top: 80px;
+  width: 100%;
+}
+
+/* line 40, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+.information {
+  background-color: #ededed;
+}
+
+/* line 44, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+nav ul {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+}
+
+/* line 47, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+nav ul li {
+  list-style-type: none;
+}
+
+/* line 57, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+ul.level2 {
+  display: flex;
+  display: -webkit-flex;
+  display: none;
+}
+
+/* line 62, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+ul.level1 li:hover ul.level2 {
+  display: block;
+}
+
+/*nav ul ul li {
+    display: none;
+}
+
+nav ul ul li:hover ul {
+	display:block;
+}
+
+nav ul ul {
+	@include display-flex;
+	li{
+		display: inline-block;
+		
+		width: $largeur_menu_elt;
+	}	
+}
+
+ul ul {display: none;} */
+/* line 86, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+.mobile-menu {
+  display: none;
+}
+
+/* line 90, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+.menu {
+  display: block;
+}
+
+/* line 94, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+.block-1, .training-box {
+  background-color: #06406c;
+}
+
+/* line 8, D:/detienne/git/imie/tp-web/src/main/resources/sass/_mixins.scss */
+.block-1 p, .training-box p {
+  color: #EEEEEE;
+}
+
+/* line 98, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+.block-2 {
+  background-color: #4c0d09;
+  background-color: #666666;
+}
+
+/* line 8, D:/detienne/git/imie/tp-web/src/main/resources/sass/_mixins.scss */
+.block-2 p {
+  color: #EEEEEE;
+}
+
+@media (max-width: 600px), (max-device-width: 600px) {
+  /* line 109, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+  nav ul {
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
+  /* line 112, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+  .menu {
+    display: none;
+  }
+  /* line 115, D:/detienne/git/imie/tp-web/src/main/resources/sass/cv2.scss */
+  .mobile-menu {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=../css/cv2.map */
