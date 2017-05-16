@@ -1,4 +1,4 @@
-const ModuleData = require('./module-data');
+const ModuleData = require('../persistence/module-data');
 
 /**
  * This is a Business Access Layer for contacts
@@ -13,11 +13,12 @@ class ModuleService {
     }
 
     /**
-     * Get contacts
+     * Get campmagnes
      * @return {Array}
      */
-    getContacts (){
-        return this.mData.contacts;
+    find () {
+        console.log("ModuleService find");
+        return this.mData.find();
     }
 
     /**

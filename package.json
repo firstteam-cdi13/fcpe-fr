@@ -4,10 +4,10 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "node ./fcpe-api/server.js",
     "test": "ng test a revoir jasmin",
     "lint": "ng lint",
-	"build": "ng build && node server.js",
+	  "build": "ng build && node ./fcpe-api/server.js",
     "e2e": "ng e2e"
   },
   "private": true,

@@ -21,7 +21,7 @@ module.exports = module.exports.toString();
 /***/ 135:
 /***/ (function(module, exports) {
 
-module.exports = "<h1>\n  {{title}}\n</h1>\n"
+module.exports = "<h1>\r\n  {{title}}\r\n</h1>\r\n\r\n"
 
 /***/ }),
 
@@ -33,7 +33,7 @@ module.exports = __webpack_require__(70);
 
 /***/ }),
 
-/***/ 69:
+/***/ 47:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -42,7 +42,7 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 69;
+webpackEmptyContext.id = 47;
 
 
 /***/ }),
@@ -81,10 +81,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
+// import { Campagne } from './model/campagne' ;
+// import { ModuleService } from './contacts.service';
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'app works!';
+        this.title = 'app works by jba!';
+        this.campagnes = [];
     }
+    /* constructor(private mService : ModuleService){
+      
+     }*/
+    AppComponent.prototype.ngOnInit = function () {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        console.log("AppComponent ngOnInit");
+        // this.ModuleService.getContacts().subscribe(data => {this.contacts = data});    
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const ModuleService = require('../module-service');
+const ModuleService = require('../service/module-service');
 const moduleService = new ModuleService();
 
 
@@ -12,8 +12,12 @@ const moduleService = new ModuleService();
 /**
  * Will get the list of etablissements
  */
-//router.get('/etablissements', (req, res) => {
-//    res.json(moduleService.getEtablissements());
-//});
+router.post('/campagnes', (req, res) => {
+	console.log('post url=/campagnes');
+
+	let campagnes = moduleService.find();
+	
+	res.json(campagnes);
+});
 
 module.exports = router;
