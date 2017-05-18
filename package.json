@@ -7,7 +7,7 @@
     "start": "node ./fcpe-api/server.js",
     "test": "ng test a revoir jasmin",
     "lint": "ng lint",
-	  "build": "ng build && node ./fcpe-api/server.js",
+    "build": "ng build && node ./fcpe-api/server.js",
     "e2e": "ng e2e",
     "postinstall": "ng build --aot -prod"
   },
@@ -17,8 +17,10 @@
     "npm": "4.5.0"
   },
   "dependencies": {
+    "@angular/cli": "1.0.3",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
@@ -28,11 +30,10 @@
     "body-parser": "^1.17.1",
     "core-js": "^2.4.1",
     "express": "^4.15.2",
+    "fs": "0.0.1-security",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4",
     "typescript": "~2.2.0",
-	  "@angular/cli": "1.0.3",  
-    "@angular/compiler-cli": "^4.0.0"
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@types/jasmine": "2.5.38",

@@ -3,9 +3,8 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+var fs = require('fs');
 
-// The API routes
-const api = require('./routes/api');
 const app = express();
 
 // Parser middleware for POST
@@ -15,8 +14,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // This is where the static assets are
 app.use(express.static(path.join(__dirname, '/../dist')));
 
-// Use the '/api' path for api routes
-app.use('/api', api);
+//recuperation de toutes les routes des fichiers js contenus dans le repertoire routes
+fs.readdirSync('fcpe-api/routes/').forEach(function (file) {
+    if (file.substr(-3) == '.js') {
+        route = require('./routes/' + file);
+        //Nom fichier sans nom api.js
+        let file2=file.slice(0, -6);
+        //Nom fichier 1ere lettre en majuscule
+        let file3= file2.charAt(0).toUpperCase() + file2.substring(1).toLowerCase();
+        app.use('/api/' + file3, route); 
+    }
+});
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
@@ -24,7 +32,7 @@ app.get('*', (req, res) => {
 });
 
 //jba 
-port= (process.env.PORT || 5000);
+port = (process.env.PORT || 5000);
 app.set('port', port);
 /**
  * Create HTTP server.
