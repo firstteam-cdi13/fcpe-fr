@@ -16,9 +16,12 @@ class ModuleService {
      * Get campmagnes
      * @return {Array}
      */
-    find () {
+    find (callback) {
         console.log("ModuleService find");
-        return this.mData.find();
+        this.mData.find(function(campagnes){
+            callback(campagnes);
+        })
+        //return this.mData.find();
     }
 
     /**

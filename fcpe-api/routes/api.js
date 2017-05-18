@@ -12,12 +12,12 @@ const moduleService = new ModuleService();
 /**
  * Will get the list of etablissements
  */
-router.post('/campagnes', (req, res) => {
+router.get('/campagnes', (req, res) => {
 	console.log('post url=/campagnes');
-
-	let campagnes = moduleService.find();
-	
-	res.json(campagnes);
+		moduleService.find(function(campagnes){
+			res.json(campagnes)
+		}
+	)
 });
 
 module.exports = router;
