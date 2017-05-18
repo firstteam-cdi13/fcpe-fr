@@ -1,42 +1,78 @@
 //const Campagne = require('../model/campagne');
+const env = require('../conf/env');
 const pg = require('pg');
-const connectionString = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/fcpe-fr';
+const connectionString = env.DATABASE_URL;
 
-/**
- * This is Data Access Layer for contacts
- */
-class ModuleData {
+class CampagneData {
 
-    /**
-     * Default constructor
-     */
-    constructor (){
-        console.log("ModuleData");
-
+    constructor() {
         this.campagnes = [];
     }
 
-    /**
-     * Gets campagnes list
-     * @return {Array}
-     */
-    find(callback) {
+    restituerListeNomCampagne(callback) {
         let results = [];
-        pg.connect(connectionString,(err,client,done)=>{
-            if(err) {
+        // Connexion à la bd
+        pg.connect(connectionString, (err, client, done) => {
+            if (err) {
                 done();
-                callback ({success: false, data: err});
+                callback({ success: false, data: err });
             }
-            const query = client.query('SELECT * FROM classe');
-            query.on('row',(result) => {
+            const query = client.query('SELECT c.nom FROM campagne c');
+            // Pour chaque ligne retournée 
+            query.on('row', (result) => {
                 results.push(result);
-            })        
-            query.on('end', () => { 
+            })
+            // Lorsque la query est terminée on ferme la connexion et on renvoi les résultats     
+            query.on('end', () => {
                 pg.end();
                 callback(results);
             });
         });
     }
+
+    restituerListeCampagneFiltree(nom, statutString, callback) {
+
+        let results = [];
+        pg.connect(connectionString, (err, client, done) => {
+            if (err) {
+                done();
+                callback({ success: false, data: err });
+            }
+
+            // Pour pouvoir utiliser un littéral ${nom} la queryString est entre accents grave (altgr + 7)
+            let queryString =
+            `SELECT c.nom,p.niveau,c.date_conseil,c.validite FROM campagne c 
+            LEFT OUTER JOIN classe p ON p.id=c.id_classe
+            WHERE c.nom LIKE '%${nom}%' AND c.validite=1 ` + statutString
+                
+            const query = client.query(queryString)
+
+            query.on('row', (result) => {
+                results.push(result);
+            })
+
+            query.on('end', () => {
+                pg.end();
+                callback(results);
+            });
+        });
+    }
+
+    supprimerCampagne(id, callback) {
+
+        pg.connect(connectionString, (err, client, done) => {
+            if (err) {
+                done();
+                callback({ success: false, data: err });
+            }
+            const query = client.query(`UPDATE campagne SET validite=0 WHERE id=${id}`);
+   
+            query.on('end', () => {
+                pg.end();
+                callback("Suppression OK");
+            });
+        });
+    }
 }
 
-module.exports = ModuleData;
+module.exports = CampagneData;

@@ -9,14 +9,30 @@ const campagneService = new CampagneService();
 // Jasmin le 12/05: Fichier � initialiser et penser une structure particuli�re
 //
 
-/**
- * Will get the list of etablissements
- */
-router.get('/', (req, res) => {
-	let campagnes = campagneService.find(function(campagnes){
-		res.json(campagnes);
+
+router.get('/listeNomCampagne', (req, res) => {
+	campagneService.restituerListeNomCampagne((response)=>{
+		res.status(200)
+		res.json(response);
 	});
 });
+
+router.get('/listeCampagneFiltree', (req, res) => {
+	let nom = req.query['nom']
+	let statut = req.query['statut']	
+	campagneService.restituerListeCampagneFiltree(nom,statut,(response)=>{
+		res.status(200)
+		res.json(response);
+	});
+});
+
+router.delete('/:id', (req, res) => {
+	let id = req.params.id
+	campagneService.supprimerCampagne(id,(response)=>{
+		res.status(200)
+		res.json(response);
+	});
+})
 
 
 

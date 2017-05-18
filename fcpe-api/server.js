@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
-var fs = require('fs');
+const fs = require('fs');
 
 const app = express();
 
