@@ -13,8 +13,11 @@ const campagneService = new CampagneService();
  * Will get the list of etablissements
  */
 router.get('/', (req, res) => {
-	let campagnes = campagneService.find();
-	res.json(campagnes);
+	let campagnes = campagneService.find(function(campagnes){
+		res.json(campagnes);
+	});
 });
+
+
 
 module.exports = router;
