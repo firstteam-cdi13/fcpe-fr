@@ -14,15 +14,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // This is where the static assets are
 app.use(express.static(path.join(__dirname, '/../dist')));
 
-//recuperation de toutes les routes des fichiers js contenus dans le repertoire routes
-fs.readdirSync('fcpe-api/routes/').forEach(function (file) {
+//recuperation de toutes les routes des fichiers js contenus dans le repertoire router
+fs.readdirSync('fcpe-api/router/').forEach(function (file) {
     if (file.substr(-3) == '.js') {
-        route = require('./routes/' + file);
-        //Nom fichier sans nom api.js
-        let file2=file.slice(0, -6);
-        //Nom fichier 1ere lettre en majuscule
-        let file3= file2.charAt(0).toUpperCase() + file2.substring(1).toLowerCase();
-        app.use('/api/' + file3, route); 
+        route = require('./router/' + file);
+        //Nom fichier sans nom api.js et mis au pluriel
+        let file2 = file.slice(0, -6) + 's';
+        app.use('/api/' + file2, route);
     }
 });
 
