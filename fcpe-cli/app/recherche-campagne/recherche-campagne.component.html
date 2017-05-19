@@ -3,6 +3,9 @@
   <div class="col-md-10">
     <section>
       <h2>Visualiser une/des campagne(s)</h2>
+      <div class="alert alert-danger" role="alert" *ngIf="erreur != null">
+        <p> {{erreur.message}}</p>
+      </div>
       <div class="panel-group">
         <!-- BLOC de RECHERCHE -->
         <div class="panel panel-default">
@@ -36,7 +39,7 @@
                 </div>
               </div>
               <div class="btn-group col-md-offset-10 col-md-2">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" (click)="rechercher()">
 												<span class="glyphicon glyphicon-search"></span>&nbsp;Rechercher
 											</button>
               </div>
@@ -60,55 +63,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Campagne 1</td>
-                  <td>5ème D</td>
-                  <td>12 / 02 /2017</td>
-                  <td>En préparation</td>
+                <tr *ngFor="let campagne of campagnes">
+                  <td>{{campagne.nom}}</td>
+                  <td>{{campagne.nomClasse}}</td>
+                  <td>{{campagne.dateConseil}}</td>
+                  <td>{{campagne.statutLib}}</td>
                   <td>
                     <div class="btn-group">
-                      <a class="btn btn-primary" href="./maquette-ECR4b.html" role="button"><span class="glyphicon glyphicon-zoom-in"></span></a>
+                      <a class="btn btn-primary" href="/api/campagnes/:id" role="button"><span class="glyphicon glyphicon-zoom-in"></span></a>
                       <button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerCampagne"><span class="glyphicon glyphicon-remove"></span></button>
                     </div>
                   </td>
-                </tr>
-                <tr>
-                  <td>Campagne 2</td>
-                  <td>5ème D</td>
-                  <td>12 / 02 /2017</td>
-                  <td>En cours</td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-primary" href="./maquette-ECR4b.html" role="button"><span class="glyphicon glyphicon-zoom-in"></span></a>
-                      <button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerCampagne"><span class="glyphicon glyphicon-remove"></span></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Campagne 3</td>
-                  <td>1ère Term B</td>
-                  <td>11 / 06 /2017</td>
-                  <td>Terminée</td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-primary" href="./maquette-ECR4b.html" role="button"><span class="glyphicon glyphicon-zoom-in"></span></a>
-                      <button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerCampagne"><span class="glyphicon glyphicon-remove"></span></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td colspan="2"></td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td colspan="2"></td>
                 </tr>
               </tbody>
               <tfoot>
