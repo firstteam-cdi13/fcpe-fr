@@ -10,7 +10,12 @@ export class RechercheCampagneComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("test");
     this.aide = { message: "aide écran ECR4a" };
+  }
+
+  public rechercher() {
+    console.log("appel au service rechercher");
   }
 
 }
