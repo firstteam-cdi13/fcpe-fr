@@ -11,13 +11,19 @@ export class RechercheCampagneComponent implements OnInit {
   aide: any;
   erreur: any=null;
   campagnes: Campagne[];
-  constructor(private campagneService: CampagneService) { }
+  selectionCampagne: Campagne;
+
+  listeNomCampagne: Campagne[];
+
+  constructor(private campagneService: CampagneService) {
+
+  }
 
   ngOnInit() {
-    console.log("test");
-    this.aide = { message: "aide écran ECR4a" };
     console.log("ngOnInit");
+    this.aide = { message: "aide écran ECR4a" };
   }
+
   // ngAfterViewChecked() {
   //   // console.log("ngAfterViewChecked");
   //   // this.erreur = null;
@@ -37,4 +43,14 @@ export class RechercheCampagneComponent implements OnInit {
         this.erreur = { message: err };
       });
   }
+
+  public supprimer() {
+    console.log("Supprimer une campagne");
+    this.campagneService.supprimer().subscribe(
+      err => {
+        console.log(err);
+        this.erreur = { message: err };
+      });
+  }
+  
 }
