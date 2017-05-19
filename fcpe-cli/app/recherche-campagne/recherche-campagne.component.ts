@@ -14,6 +14,7 @@ export class RechercheCampagneComponent implements OnInit {
   constructor(private campagneService: CampagneService) { }
 
   ngOnInit() {
+    console.log("test");
     this.aide = { message: "aide écran ECR4a" };
     console.log("ngOnInit");
   }
