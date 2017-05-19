@@ -1,0 +1,132 @@
+<div class="row">
+  <!-- MAIN -->
+  <div class="col-md-10">
+    <section>
+      <h2>Visualiser une/des campagne(s)</h2>
+      <div class="panel-group">
+        <!-- BLOC de RECHERCHE -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Recherche campagne</h3>
+          </div>
+          <div class="panel-body">
+            <form action="#" method="post" class="form-horizontal">
+              <div class="form-group">
+                <label for="campagne.nom" class="col-md-2 control-label">Nom</label>
+                <div class="col-md-10">
+                  <input list="campagne.nom.list" type="text" class="form-control" id="campagne.nom" name="campagne.nom" placeholder="Saisissez un nom">
+                  <datalist id="campagne.nom.list">
+                    <option value="Campagne 1">
+                      <option value="Campagne 2">
+                        <option value="Campagne 3">
+                          <option value="Conseil 1">
+                            <option value="Mauvais">
+                  </datalist>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">Statut</label>
+                <div class="col-md-10">
+                  <label for="campagne.statut.inactif" class="radio-inline">
+													<input type="radio" id="campagne.statut.inactif" name="campagne.statut" value="0">En préparation</label>
+                  <label for="campagne.statut.encours" class="radio-inline">
+													<input type="radio" id="campagne.statut.encours" name="campagne.statut" value="1">En cours</label>
+                  <label for="campagne.statut.actif" class="radio-inline">
+													<input type="radio" id="campagne.statut.actif" name="campagne.statut" value="2" checked>Terminée</label>
+                </div>
+              </div>
+              <div class="btn-group col-md-offset-10 col-md-2">
+                <button type="submit" class="btn btn-primary">
+												<span class="glyphicon glyphicon-search"></span>&nbsp;Rechercher
+											</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- BLOC de RESULTATS -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">(x) campagne(s)</h2>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Classe</th>
+                  <th>Conseil de classe</th>
+                  <th>Statut</th>
+                  <th colspan="2"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Campagne 1</td>
+                  <td>5ème D</td>
+                  <td>12 / 02 /2017</td>
+                  <td>En préparation</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-primary" href="./maquette-ECR4b.html" role="button"><span class="glyphicon glyphicon-zoom-in"></span></a>
+                      <button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerCampagne"><span class="glyphicon glyphicon-remove"></span></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Campagne 2</td>
+                  <td>5ème D</td>
+                  <td>12 / 02 /2017</td>
+                  <td>En cours</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-primary" href="./maquette-ECR4b.html" role="button"><span class="glyphicon glyphicon-zoom-in"></span></a>
+                      <button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerCampagne"><span class="glyphicon glyphicon-remove"></span></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Campagne 3</td>
+                  <td>1ère Term B</td>
+                  <td>11 / 06 /2017</td>
+                  <td>Terminée</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-primary" href="./maquette-ECR4b.html" role="button"><span class="glyphicon glyphicon-zoom-in"></span></a>
+                      <button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerCampagne"><span class="glyphicon glyphicon-remove"></span></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td colspan="2"></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td colspan="2"></td>
+                </tr>
+              </tbody>
+              <tfoot>
+              </tfoot>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ASIDE -->
+
+  <div class="col-md-2">
+    <aside>
+      <app-aide [aide]="aide"></app-aide>
+      <app-favoris></app-favoris>
+    </aside>
+  </div>
+</div>
