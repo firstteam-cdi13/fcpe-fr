@@ -39,8 +39,8 @@ class CampagneService {
     }
 
     supprimerCampagne (id, callback) {
-        this.cData.supprimerCampagne(id, (code,response,errmsg) => {
-            callback(code,response,errmsg);
+        this.cData.supprimerCampagne(id, (code,response,msg) => {
+            callback(code,response,msg);
         })
     }
 

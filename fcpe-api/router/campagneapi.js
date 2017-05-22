@@ -13,7 +13,6 @@ const campagneService = new CampagneService();
 router.get('/listeNomCampagne', (req, res) => {
 	campagneService.restituerListeNomCampagne((code,response,errmsg)=>{
 		res.status(code)
-		res.setHeader('Content-Type','application/json');
 		errmsg ? res.json(msg) : res.json(response);
 	});
 });
@@ -23,7 +22,6 @@ router.get('/listeCampagneFiltree', (req, res) => {
 	let statut = req.query['statut']	
 	campagneService.restituerListeCampagneFiltree(nom,statut,(code,response,errmsg)=>{
 		res.status(code)
-		res.setHeader('Content-Type','application/json');
 		errmsg ? res.json(msg) : res.json(response);
 	});
 });
@@ -32,10 +30,14 @@ router.delete('/:id', (req, res) => {
 	let id = req.params.id
 	campagneService.supprimerCampagne(id,(code,response,msg)=>{
 		res.status(code)
-		res.setHeader('Content-Type','application/json');
-		errmsg ? res.json(msg) : res.json(response);
+		res.json(msg)
 	});
 })
+
+router.get('*', function(req, res){
+	res.status(404)
+	res.json({"msg":"URL non valide"});  
+});
 
 
 module.exports = router;

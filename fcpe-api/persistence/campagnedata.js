@@ -72,7 +72,7 @@ class CampagneData {
    
             query.on('end', () => {
                 pg.end();
-                callback(204,{"msg":"Suppression OK"},null);
+                callback(200,null,{"msg":"Suppression OK"});
             });
         });
     }
