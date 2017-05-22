@@ -8,14 +8,14 @@ class CampagneService {
     }
 
     restituerListeNomCampagne (callback) {
-        this.cData.restituerListeNomCampagne((campagnes) => {
+        this.cData.restituerListeNomCampagne((code,campagnes,errmsg) => {
 
             let elements = [];
             for(let element of campagnes) {
                 let obj = {nom: element.nom};
                 elements.push(obj);
             }
-            callback(elements);
+            callback(code,elements,errmsg);
         })
     }
 
@@ -24,7 +24,7 @@ class CampagneService {
         // pour éviter un  LIKE %undefined% dans la requête
         if (!nom){nom = ''}
         
-        this.cData.restituerListeCampagneFiltree(nom, statut, (campagnes) => {            
+        this.cData.restituerListeCampagneFiltree(nom, statut, (code,campagnes,errmsg) => {            
             let elements = [];
             for(let element of campagnes) {
                 let obj = {id : element.id,
@@ -34,13 +34,13 @@ class CampagneService {
                     statutLib: element.getLibelleStatut()};
                 elements.push(obj);
             }
-            callback(elements);
+            callback(code,elements,errmsg);
         })
     }
 
     supprimerCampagne (id, callback) {
-        this.cData.supprimerCampagne(id, (supprmsg) => {
-            callback(supprmsg);
+        this.cData.supprimerCampagne(id, (code,response,errmsg) => {
+            callback(code,response,errmsg);
         })
     }
 
