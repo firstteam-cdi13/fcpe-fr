@@ -17,6 +17,8 @@ export class RechercheCampagneComponent implements OnInit {
 
   listeNomCampagne: Campagne[];
 
+  selectionStatut : number;
+
   constructor(private campagneService: CampagneService) {
 
   }
@@ -25,8 +27,8 @@ export class RechercheCampagneComponent implements OnInit {
     console.log("ngOnInit");
     this.aide = { message: "aide écran ECR4a" };
     this.campagneCriteres = new Campagne(null,'',null,null,null);
-    this.campagneCriteres.statut = 2;
-    
+    this.selectionStatut = 2;
+
     this.campagneService.listerNomCampagne().subscribe(
       datas => {
         this.listeNomCampagne = datas;
@@ -49,10 +51,10 @@ export class RechercheCampagneComponent implements OnInit {
   public rechercher() {
 
     if (this.campagneCriteres != null) {
-      console.log(this.campagneCriteres.nom + " - " + this.campagneCriteres.statut);
+      console.log(this.campagneCriteres.nom + " - " + this.campagneCriteres.statut + " - " + this.selectionStatut);
     }
 
-    this.campagneService.rechercher(this.campagneCriteres.nom,this.campagneCriteres.statut).subscribe(
+    this.campagneService.rechercher(this.campagneCriteres.nom,this.selectionStatut).subscribe(
       campagnes => {
         this.campagnes = campagnes;
       },

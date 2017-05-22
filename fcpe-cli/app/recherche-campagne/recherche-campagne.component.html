@@ -27,11 +27,11 @@
                 <label class="col-md-2 control-label">Statut</label>
                 <div class="col-md-10">
                   <label for="campagne.statut.inactif" class="radio-inline">
-													<input type="radio" [(ngModel)]="campagneCriteres.statut" id="campagne.statut.inactif" name="campagne.statut" value="0">En préparation</label>
+													<input type="radio" [(ngModel)]="selectionStatut" id="campagne.statut.inactif" name="campagne.statut" [value]="0">En préparation</label>
                   <label for="campagne.statut.encours" class="radio-inline">
-													<input type="radio" [(ngModel)]="campagneCriteres.statut" id="campagne.statut.encours" name="campagne.statut" value="1">En cours</label>
+													<input type="radio" [(ngModel)]="selectionStatut" id="campagne.statut.encours" name="campagne.statut" [value]="1">En cours</label>
                   <label for="campagne.statut.actif" class="radio-inline">
-													<input type="radio" [(ngModel)]="campagneCriteres.statut" id="campagne.statut.actif" name="campagne.statut" value="2">Terminée</label>
+													<input type="radio" [(ngModel)]="selectionStatut" id="campagne.statut.actif" name="campagne.statut" [value]="2">Terminée</label>
                 </div>
               </div>
               <div class="btn-group col-md-offset-10 col-md-2">
