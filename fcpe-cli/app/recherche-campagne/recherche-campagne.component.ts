@@ -13,6 +13,8 @@ export class RechercheCampagneComponent implements OnInit {
   campagnes: Campagne[];
   selectionCampagne: Campagne;
 
+  campagneCriteres : Campagne;
+
   listeNomCampagne: Campagne[];
 
   constructor(private campagneService: CampagneService) {
@@ -22,6 +24,19 @@ export class RechercheCampagneComponent implements OnInit {
   ngOnInit() {
     console.log("ngOnInit");
     this.aide = { message: "aide écran ECR4a" };
+    this.campagneCriteres = new Campagne(null,'',null,null,null);
+    this.campagneCriteres.statut = 2;
+    
+    this.campagneService.listerNomCampagne().subscribe(
+      datas => {
+        this.listeNomCampagne = datas;
+      },
+      err => {
+        console.log(err);
+        console.log("liste nom campagne erreur");        
+        //this.erreur = { message: err };
+      });
+
   }
 
   // ngAfterViewChecked() {
@@ -32,7 +47,12 @@ export class RechercheCampagneComponent implements OnInit {
    * Rechercher les campagnes
    */
   public rechercher() {
-    this.campagneService.rechercher().subscribe(
+
+    if (this.campagneCriteres != null) {
+      console.log(this.campagneCriteres.nom + " - " + this.campagneCriteres.statut);
+    }
+
+    this.campagneService.rechercher(this.campagneCriteres.nom,this.campagneCriteres.statut).subscribe(
       campagnes => {
         this.campagnes = campagnes;
       },
@@ -44,12 +64,38 @@ export class RechercheCampagneComponent implements OnInit {
       });
   }
 
-  public supprimer() {
+  public demanderSuppression(campagne : Campagne){
+     console.log("demanderSuppression une campagne : nom=" + campagne.nom);
+     this.selectionCampagne = campagne;
+  }
+
+  public annuler() {
+     console.log("Annuler confirmation");
+     this.selectionCampagne = null;
+  }
+
+  public supprimer(campagne : Campagne) {
     console.log("Supprimer une campagne");
-    this.campagneService.supprimer().subscribe(
+
+    let index = 0;
+
+    for (let element of this.campagnes){
+      if (element.id == campagne.id) {
+        this.campagnes.splice(index,1);
+        break;
+      }
+      index++;
+    }
+
+    this.campagneService.supprimer(campagne).subscribe(
+      () => {
+        console.log("Suppression OK");
+      },
       err => {
+        console.log("Suppression KO");
         console.log(err);
-        this.erreur = { message: err };
+        this.erreur = { message: "Echec de la suppression de la campagne \"" + campagne.nom + "\"" };
+        this.rechercher();
       });
   }
   
