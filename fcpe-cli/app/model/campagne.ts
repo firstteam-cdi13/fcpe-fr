@@ -3,6 +3,7 @@ export class Campagne {
     nom: string;
     nomClasse: string;
     dateConseil: Date;
+    statut: number;
     statutLib: string;
 
     constructor(id, nom, nomClasse, dateConseil, statutLib) {
@@ -10,6 +11,7 @@ export class Campagne {
         this.nom = nom;
         this.nomClasse = nomClasse;
         this.dateConseil = dateConseil;
+        //this.statut = statut;
         this.statutLib = statutLib;
     }
 }

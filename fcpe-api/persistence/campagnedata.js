@@ -17,10 +17,11 @@ class CampagneData {
                 done();
                 callback({ success: false, data: err });
             }
-            const query = client.query('SELECT c.nom FROM campagne c');
+            const query = client.query('SELECT c.id,c.nom FROM campagne c');
             // Pour chaque ligne retournée 
             query.on('row', (result) => {
-                results.push(result);
+                var campagne = new Campagne(result.id,result.nom,null,null,null,null);
+                results.push(campagne);
             })
             // Lorsque la query est terminée on ferme la connexion et on renvoi les résultats     
             query.on('end', () => {

@@ -9,7 +9,13 @@ class CampagneService {
 
     restituerListeNomCampagne (callback) {
         this.cData.restituerListeNomCampagne((campagnes) => {
-            callback(campagnes);
+
+            let elements = [];
+            for(let element of campagnes) {
+                let obj = {nom: element.nom};
+                elements.push(obj);
+            }
+            callback(elements);
         })
     }
 
