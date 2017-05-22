@@ -15,7 +15,7 @@ class CampagneData {
         pg.connect(connectionString, (err, client, done) => {
             if (err) {
                 done();
-                callback({ success: false, data: err });
+                callback(500,null,err);
             }
             const query = client.query('SELECT c.id,c.nom FROM campagne c');
             // Pour chaque ligne retournée 
@@ -26,7 +26,7 @@ class CampagneData {
             // Lorsque la query est terminée on ferme la connexion et on renvoi les résultats     
             query.on('end', () => {
                 pg.end();
-                callback(results);
+                callback(200,results,null);
             });
         });
     }
@@ -37,7 +37,7 @@ class CampagneData {
         pg.connect(connectionString, (err, client, done) => {
             if (err) {
                 done();
-                callback({ success: false, data: err });
+                callback(500,null,err);
             }
 
             let statutString = this.getStatutString(statut);
@@ -58,7 +58,7 @@ class CampagneData {
 
             query.on('end', () => {
                 pg.end();
-                callback(results);
+                callback(200,results,null);
             });
         });
     }
@@ -68,13 +68,13 @@ class CampagneData {
         pg.connect(connectionString, (err, client, done) => {
             if (err) {
                 done();
-                callback({ success: false, data: err });
+                callback(500,null,err);
             }
             const query = client.query(`UPDATE campagne SET validite=0 WHERE id=${id}`);
    
             query.on('end', () => {
                 pg.end();
-                callback("Suppression OK");
+                callback(204,"Suppression OK",null);
             });
         });
     }

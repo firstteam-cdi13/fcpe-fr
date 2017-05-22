@@ -23,12 +23,8 @@ class CampagneService {
         // Si le nom n'est pas spécifié on remplace undefined par une chaine vide 
         // pour éviter un  LIKE %undefined% dans la requête
         if (!nom){nom = ''}
-        // La méthode getStatutString renvoi la fin de la requête en fonction du statut
         
-        this.cData.restituerListeCampagneFiltree(nom, statut, (campagnes) => {
-            
-            console.log(campagnes);
-
+        this.cData.restituerListeCampagneFiltree(nom, statut, (campagnes) => {            
             let elements = [];
             for(let element of campagnes) {
                 let obj = {id : element.id,
@@ -38,7 +34,6 @@ class CampagneService {
                     statutLib: element.getLibelleStatut()};
                 elements.push(obj);
             }
-
             callback(elements);
         })
     }
