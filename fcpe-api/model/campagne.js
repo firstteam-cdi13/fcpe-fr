@@ -1,12 +1,13 @@
 class Campagne {
 
-    constructor(id,nom,nomClasse,dateConseil,dateDebut,dateFin){
-        this.id = id;
-        this.nom = nom;
-        this.dateConseil = dateConseil;
-        this.nomClasse = nomClasse;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
+    constructor(){
+        this.id;
+        this.nom;
+        this.dateConseil;
+        this.nomConseil;
+        this.nomClasse;
+        this.dateDebut;
+        this.dateFin;
         
         this.getStatut = function() {
             let statut = null;

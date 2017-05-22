@@ -34,7 +34,9 @@ class CampagneService {
                 let obj = {id : element.id,
                     nom: element.nom,
                     dateConseil: element.dateConseil, 
-                    nomClasse: element.nomClasse, 
+                    nomClasse: element.nomClasse,
+                    nomConseil:element.nomConseil,
+                    statut:element.getStatut(), 
                     statutLib: element.getLibelleStatut()};
                 elements.push(obj);
             }

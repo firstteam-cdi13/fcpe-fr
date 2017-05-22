@@ -19,10 +19,10 @@ export class CampagneService {
     this.options = new RequestOptions({ headers: this.headers }); // Create a request option
   }
 
-  public rechercher(nom,statut): Observable<Campagne[]> {
+  public rechercher(nom, statut): Observable<Campagne[]> {
     let url = '/api/campagnes/listeCampagneFiltree';
 
-    let params : URLSearchParams = new URLSearchParams();
+    let params: URLSearchParams = new URLSearchParams();
     params.set('nom', nom);
     params.set('statut', statut);
 
@@ -30,19 +30,27 @@ export class CampagneService {
 
     return this.http.get(url, this.options)
       .map((res: Response) => {
-        console.log("res",res)
+        console.log("res", res)
         //Transcodage de la liste de contacts en tableau d'objets Contact
         let liste: Campagne[] = [];
         for (let obj of res.json()) {
-          liste.push(new Campagne(obj.id, obj.nom, obj.nomClasse, obj.dateConseil, obj.statutLib));
+          let campagne: Campagne = new Campagne();
+          campagne.id = obj.id;
+          campagne.nom = obj.nom;
+          campagne.nomClasse = obj.nomClasse;
+          campagne.dateConseil = obj.dateConseil;
+          campagne.statut = obj.statut;
+          campagne.statutLib = obj.statutLib;
+          liste.push(campagne);
         }
+        console.log ("liste filtree",liste)
         return liste;
       })
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   public listerNomCampagne(): Observable<Campagne[]> {
-    
+
     console.log("CLI: appel service restituerListeNomCampagne");
     let url = '/api/campagnes/listeNomCampagne';
 
@@ -51,35 +59,18 @@ export class CampagneService {
 
         let liste: Campagne[] = [];
         for (let obj of res.json()) {
-          liste.push(new Campagne(null, obj.nom, null, null, null));
+          let campagne: Campagne = new Campagne();
+          campagne.nom = obj.nom;
+          liste.push(campagne);
         }
         return liste;
       })
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  public supprimer(campagne : Campagne) {
+  public supprimer(campagne: Campagne) {
     console.log("CLI: appel service supprimerCampagne");
     let url = '/api/campagnes/' + campagne.id;
     return this.http.delete(url);
   }
-
-  //jba: juste pour exemple
-  //   addContact(contact: Contact): Observable<Contact[]> {
-  //   //avant accès à l'API
-  //   // let contacts=[];
-  //   // contacts.push(new Contact(1, "Tidiane SIDIBE", "Nantes, France", "06000001"));
-  //   // contacts.push(new Contact(2, "Jean-Brice BOUTIN", "Nantes, France", "06000002"));
-  //   // contacts.push(new Contact(3, "Marianne POURRE", "Rennes, France", "06000003"));
-
-  //   this.url = 'http://localhost:9484/api/contacts';
-  //   //ou chemin relatif this.url = '/api/contacts';
-
-  //   let bodyString = JSON.stringify(contact); // Stringify payload
-  //   let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-  //   let options = new RequestOptions({ headers: headers }); // Create a request option
-  //   return this.http.post(this.url, bodyString, options) // ...using post request
-  //     .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
-  //     .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
-  // }
 }

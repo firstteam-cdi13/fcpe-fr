@@ -6,12 +6,5 @@ export class Campagne {
     statut: number;
     statutLib: string;
 
-    constructor(id, nom, nomClasse, dateConseil, statutLib) {
-        this.id = id;
-        this.nom = nom;
-        this.nomClasse = nomClasse;
-        this.dateConseil = dateConseil;
-        //this.statut = statut;
-        this.statutLib = statutLib;
-    }
+    constructor() {}
 }

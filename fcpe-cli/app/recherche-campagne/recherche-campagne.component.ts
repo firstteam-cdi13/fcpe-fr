@@ -10,7 +10,7 @@ import { Campagne } from '../model/campagne';
 export class RechercheCampagneComponent implements OnInit {
   aide: any;
   erreur: any=null;
-  campagnes: Campagne[];
+  campagnes: Campagne[] = [];
   selectionCampagne: Campagne;
 
   campagneCriteres : Campagne;
@@ -26,7 +26,8 @@ export class RechercheCampagneComponent implements OnInit {
   ngOnInit() {
     console.log("ngOnInit");
     this.aide = { message: "aide écran ECR4a" };
-    this.campagneCriteres = new Campagne(null,'',null,null,null);
+    this.campagneCriteres = new Campagne();
+    this.campagneCriteres.nom = ""; 
     this.selectionStatut = 2;
 
     this.campagneService.listerNomCampagne().subscribe(
