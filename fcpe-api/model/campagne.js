@@ -1,10 +1,13 @@
 class Campagne {
 
-    constructor(id,nom,nomClasse,dateConseil,dateDebut,dateFin){
+    constructor(id,nom,niveau,indice,serie,dateConseil,dateDebut,dateFin){
         this.id = id;
         this.nom = nom;
+        this.niveau = niveau
+        this.indice = indice;
+        this.serie = serie;
+        //this.nomClasse = nomClasse;
         this.dateConseil = dateConseil;
-        this.nomClasse = nomClasse;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         
@@ -41,6 +44,13 @@ class Campagne {
                     libelleStatut = '';
             }
             return libelleStatut;
+        }
+
+        this.getNomClasse = ()=>{
+            let nomClasse = this.niveau
+            if(this.indice){nomClasse += this.indice}
+            if(this.serie){nomClasse += " " + this.serie}
+            return nomClasse
         }
     }
 }

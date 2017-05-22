@@ -30,11 +30,26 @@ class CampagneService {
                 let obj = {id : element.id,
                     nom: element.nom,
                     dateConseil: element.dateConseil, 
-                    nomClasse: element.nomClasse, 
+                    nomClasse: element.getNomClasse(), 
                     statutLib: element.getLibelleStatut()};
                 elements.push(obj);
             }
             callback(code,elements,errmsg);
+        })
+    }
+
+    restituerCampagne (cid, callback) {        
+        this.cData.restituerCampagne(cid, (code,campagne,errmsg) => {            
+                let obj = {id : campagne.id,
+                    nom: campagne.nom,
+                    debut: campagne.dateDebut,
+                    fin: campagne.dateFin,
+                    dateConseil: campagne.dateConseil, 
+                    nomClasse: campagne.getNomClasse(), 
+                    statutLib: campagne.getLibelleStatut(),
+                    questions: campagne.questions
+                    };
+            callback(code,obj,errmsg);
         })
     }
 
