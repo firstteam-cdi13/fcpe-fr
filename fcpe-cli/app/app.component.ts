@@ -9,9 +9,9 @@ import { Component, OnInit  } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app works by jba!';
-
+  
   campagnes : any = [];
+  visibiliteBlocUtilisateur  : boolean = true;
 
  /* constructor(private mService : ModuleService){
    
@@ -23,4 +23,7 @@ export class AppComponent implements OnInit {
     console.log("AppComponent ngOnInit");
     // this.ModuleService.getContacts().subscribe(data => {this.contacts = data});    
   }
+
+  
+  
 }

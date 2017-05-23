@@ -1,4 +1,7 @@
-<h1>
-  {{title}}
-</h1>
-
+<app-header [visibiliteBlocUtilisateur]="visibiliteBlocUtilisateur"></app-header>
+<app-nav></app-nav>
+<main>
+  <!-- <app-recherche-campagne></app-recherche-campagne> -->
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>

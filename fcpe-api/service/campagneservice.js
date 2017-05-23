@@ -9,7 +9,13 @@ class CampagneService {
 
     restituerListeNomCampagne (callback) {
         this.cData.restituerListeNomCampagne((campagnes) => {
-            callback(campagnes);
+
+            let elements = [];
+            for(let element of campagnes) {
+                let obj = {nom: element.nom};
+                elements.push(obj);
+            }
+            callback(elements);
         })
     }
 
@@ -18,9 +24,24 @@ class CampagneService {
         // pour éviter un  LIKE %undefined% dans la requête
         if (!nom){nom = ''}
         // La méthode getStatutString renvoi la fin de la requête en fonction du statut
-        let statutString = this.getStatutString(statut)
-        this.cData.restituerListeCampagneFiltree(nom, statutString, (campagnes) => {
-            callback(campagnes);
+        
+        this.cData.restituerListeCampagneFiltree(nom, statut, (campagnes) => {
+            
+            console.log(campagnes);
+
+            let elements = [];
+            for(let element of campagnes) {
+                let obj = {id : element.id,
+                    nom: element.nom,
+                    dateConseil: element.dateConseil, 
+                    nomClasse: element.nomClasse,
+                    nomConseil:element.nomConseil,
+                    statut:element.getStatut(), 
+                    statutLib: element.getLibelleStatut()};
+                elements.push(obj);
+            }
+
+            callback(elements);
         })
     }
 
@@ -29,27 +50,6 @@ class CampagneService {
             callback(supprmsg);
         })
     }
-
-    getStatutString(statut){
-        let now = new Date().toDateString();
-        switch(statut){
-            case undefined:
-                return ``
-                break;
-            case '0': // En préparation
-                return `AND c.date_debut > '${now}'`
-                break;
-            case '1': // En cours
-                return `AND c.date_debut <= '${now}' AND c.date_fin >= '${now}'`
-                break;
-            case '2': // Terminée
-                return `AND c.date_fin < '${now}'`
-                break;
-            default:
-                return ``
-        }
-    }
-
 
 }
 
