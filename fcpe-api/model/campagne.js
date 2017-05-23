@@ -6,7 +6,6 @@ class Campagne {
         this.niveau = niveau
         this.indice = indice;
         this.serie = serie;
-        //this.nomClasse = nomClasse;
         this.dateConseil = dateConseil;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;

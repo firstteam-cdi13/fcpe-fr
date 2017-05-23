@@ -30,7 +30,9 @@ class CampagneService {
                 let obj = {id : element.id,
                     nom: element.nom,
                     dateConseil: element.dateConseil, 
-                    nomClasse: element.getNomClasse(), 
+                    nomClasse: element.getNomClasse(),
+                    nomConseil:element.nomConseil,
+                    statut:element.getStatut(), 
                     statutLib: element.getLibelleStatut()};
                 elements.push(obj);
             }

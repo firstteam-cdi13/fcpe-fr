@@ -17,18 +17,18 @@ router.get('/listeNomCampagne', (req, res) => {
 	});
 });
 
-router.get('/:id', (req, res) => {
-	let cid = req.params.id
-	campagneService.restituerCampagne(cid,(code,response,errmsg)=>{
+router.get('/listeCampagneFiltree', (req, res) => {
+	let nom = req.query['nom']
+	let statut = req.query['statut']	
+	campagneService.restituerListeCampagneFiltree(nom,statut,(code,response,errmsg)=>{
 		res.status(code)
 		errmsg ? res.json(msg) : res.json(response);
 	});
 });
 
-router.get('/listeCampagneFiltree', (req, res) => {
-	let nom = req.query['nom']
-	let statut = req.query['statut']	
-	campagneService.restituerListeCampagneFiltree(nom,statut,(code,response,errmsg)=>{
+router.get('/:id', (req, res) => {
+	let cid = req.params.id
+	campagneService.restituerCampagne(cid,(code,response,errmsg)=>{
 		res.status(code)
 		errmsg ? res.json(msg) : res.json(response);
 	});
@@ -43,6 +43,7 @@ router.delete('/:id', (req, res) => {
 })
 
 router.get('*', function(req, res){
+	console.get('get *')
 	res.status(404)
 	res.json({"msg":"URL non valide"});  
 });

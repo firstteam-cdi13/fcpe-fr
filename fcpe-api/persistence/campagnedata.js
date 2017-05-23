@@ -21,7 +21,9 @@ class CampagneData {
             const query = client.query('SELECT c.id,c.nom FROM campagne c');
             // Pour chaque ligne retournée 
             query.on('row', (result) => {
-                var campagne = new Campagne(result.id,result.nom,null,null,null,null,null,null);
+                let campagne = new Campagne(result.id,result.nom,null,null,null,null,null,null);
+                campagne.id = result.id;
+                campagne.nom = result.nom;
                 results.push(campagne);
             })
             // Lorsque la query est terminée on ferme la connexion et on renvoi les résultats     
@@ -39,19 +41,27 @@ class CampagneData {
                 done();
                 callback(500,null,{"errmsg":err});
             }
-
+    
             let statutString = this.getStatutString(statut);
-
             // Pour pouvoir utiliser un littéral ${nom} la queryString est entre accents grave (altgr + 7)
             let queryString =
             `SELECT c.id,c.nom,p.niveau,p.indice,p.serie,c.date_conseil,c.date_debut,c.date_fin FROM campagne c 
             LEFT OUTER JOIN classe p ON p.id=c.id_classe
             WHERE c.nom LIKE '%${nom}%' AND c.validite=1 ` + statutString
-                
+
             const query = client.query(queryString)
 
-            query.on('row', (result) => {            
-                let campagne = new Campagne(result.id,result.nom,result.niveau,result.indice,result.serie,result.date_conseil,result.date_debut,result.date_fin);
+            query.on('row', (result) => {
+                var campagne = new Campagne();
+                campagne.id = result.id;
+                campagne.nom = result.nom;
+                campagne.niveau = result.niveau;
+                campagne.indice = result.indice;
+                campagne.serie = result.serie;
+                campagne.nomConseil = result.conseil;
+                campagne.dateConseil = result.date_conseil;
+                campagne.dateDebut = result.date_debut;
+                campagne.dateFin = result.date_fin;
                 results.push(campagne);
             })
 
@@ -116,7 +126,7 @@ class CampagneData {
                 callback(500,null,{"errmsg":err});
             }
             const query = client.query(`UPDATE campagne SET validite=0 WHERE id=${id}`);
-   
+
             query.on('end', () => {
                 pg.end();
                 callback(200,null,{"msg":"Suppression OK"});
@@ -124,9 +134,9 @@ class CampagneData {
         });
     }
 
-    getStatutString(statut){
+    getStatutString(statut) {
         let now = new Date().toDateString();
-        switch(statut){
+        switch (statut) {
             case undefined:
                 return ``
                 break;
