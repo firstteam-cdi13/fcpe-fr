@@ -28,10 +28,15 @@ router.get('/listeCampagneFiltree', (req, res) => {
 
 router.get('/:id', (req, res) => {
 	let cid = req.params.id
-	campagneService.restituerCampagne(cid,(code,response,errmsg)=>{
+	if(Number.isInteger(cid)){
+		campagneService.restituerCampagne(cid,(code,response,errmsg)=>{
 		res.status(code)
 		errmsg ? res.json(msg) : res.json(response);
-	});
+		});
+	}else{
+		res.status(404)
+		res.json({"msg":"URL non valide"});  
+	}
 });
 
 router.delete('/:id', (req, res) => {
@@ -43,7 +48,6 @@ router.delete('/:id', (req, res) => {
 })
 
 router.get('*', function(req, res){
-	console.get('get *')
 	res.status(404)
 	res.json({"msg":"URL non valide"});  
 });

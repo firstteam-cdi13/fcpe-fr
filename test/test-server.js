@@ -38,7 +38,7 @@ describe('Campagnes', function() {
         res.body[0].should.have.property('id').and.to.be.a('number')
         res.body[0].should.have.property('nom').and.to.be.a('string')
         res.body[0].should.have.property('dateConseil').and.to.be.a('string')
-        res.body[0].should.have.property('nomClasse').and.to.be.a('number')
+        res.body[0].should.have.property('nomClasse').and.to.be.a('string')
         res.body[0].should.have.property('statutLib').and.to.be.a('string')
         done();
         });
