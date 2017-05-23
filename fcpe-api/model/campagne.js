@@ -1,13 +1,14 @@
 class Campagne {
 
-    constructor(){
-        this.id;
-        this.nom;
-        this.dateConseil;
-        this.nomConseil;
-        this.nomClasse;
-        this.dateDebut;
-        this.dateFin;
+    constructor(id,nom,niveau,indice,serie,dateConseil,dateDebut,dateFin){
+        this.id = id;
+        this.nom = nom;
+        this.niveau = niveau
+        this.indice = indice;
+        this.serie = serie;
+        this.dateConseil = dateConseil;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
         
         this.getStatut = function() {
             let statut = null;
@@ -42,6 +43,13 @@ class Campagne {
                     libelleStatut = '';
             }
             return libelleStatut;
+        }
+
+        this.getNomClasse = ()=>{
+            let nomClasse = this.niveau
+            if(this.indice){nomClasse += this.indice}
+            if(this.serie){nomClasse += " " + this.serie}
+            return nomClasse
         }
     }
 }
