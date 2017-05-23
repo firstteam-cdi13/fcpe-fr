@@ -98,14 +98,32 @@ class CampagneData {
 
             query.on('row', (result) => {
                 if(first){
-                    campagne = new Campagne(result.id,result.nom,result.niveau,result.indice,result.serie,result.date_conseil,result.date_debut,result.date_fin);                    
+                    campagne = new Campagne(); 
+                    campagne.id = result.id
+                    campagne.nom = result.nom       
+                    campagne.niveau = result.niveau
+                    campagne.indice = result.indice
+                    campagne.serie = result.serie
+                    campagne.dateConseil = result.date_conseil
+                    campagne.dateDebut = result.date_debut
+                    campagne.dateFin = result.date_fin            
                     first = false
                 }
-
-                if(first || curQuestion.id !== result.qpid){                                      
-                    curQuestion = new Question(result.qid,result.ordre_question,result.intitule_principal,result.intitule_secondaire,result.type,
-                    result.est_actif,result.est_obligatoire,result.est_global)
-                    questions.push(curQuestion)                                                
+                // Si on traite la premiere ligne de retour ou que l'id question change dans les propositions
+                // on crée un nouvelle question
+                if(first || curQuestion.id !== result.qpid){                                    
+                    curQuestion = new Question()
+                    curQuestion.id = result.qid
+                    curQuestion.ordre = result.ordre_question
+                    curQuestion.intitule_principal = result.intitule_principal
+                    curQuestion.intitule_secondaire = result.intitule_secondaire
+                    curQuestion.type = result.type
+                    curQuestion.est_actif = result.est_actif
+                    curQuestion.est_obligatoire = result.est_obligatoire
+                    curQuestion.est_global = result.est_global  
+                    curQuestion.propositions = []                  
+                    questions.push(curQuestion)
+                    console.log(curQuestion)
                 }
                 curQuestion.propositions.push({"ordre":result.ordre_proposition,"libelle":result.libelle})  
             })
