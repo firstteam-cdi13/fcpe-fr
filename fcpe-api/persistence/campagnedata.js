@@ -63,8 +63,9 @@ class CampagneData {
     }
 
     restituerCampagne(cid, callback) {
-        let results = [];
         let questions = [];
+        let first = true;
+        let campagne = {}
         pg.connect(connectionString, (err, client, done) => {
             if (err) {
                 done();
@@ -72,32 +73,37 @@ class CampagneData {
             }
 
             let queryString =
-            `SELECT c.id,c.nom,p.niveau,p.indice,p.serie,c.date_conseil,c.date_debut,c.date_fin,q.intitule_principal,q.intitule_secondaire,
-            q.type,q.est_actif,q.est_obligatoire,q.est_global,cq.ordre AS ordre_question,qp.ordre AS ordre_proposition,pr.libelle
-            FROM campagne c 
+            `SELECT c.id,q.id AS qid,c.nom,p.niveau,p.indice,p.serie,c.date_conseil,c.date_debut,c.date_fin,q.intitule_principal,q.intitule_secondaire,
+            q.type,q.est_actif,q.est_obligatoire,q.est_global,cq.ordre AS ordre_question,qp.ordre AS ordre_proposition,pr.libelle, qp.id AS qpid, pr.id AS prid
+            FROM campagne c
             LEFT OUTER JOIN classe p ON p.id=c.id_classe
-            LEFT OUTER JOIN campagnequestion cq on cq.id = c.id
+            LEFT OUTER JOIN campagnequestion cq on cq.id = c.id 
             LEFT OUTER JOIN question q on q.id = cq.id_question
-            LEFT OUTER JOIN questionproposition qp on qp.id = q.id
+            LEFT OUTER JOIN questionproposition qp on qp.id = q.id 
             LEFT OUTER JOIN proposition pr on pr.id = qp.id_proposition
-
             WHERE c.id=${cid}`
                 
             const query = client.query(queryString)
+            let curQuestion = {}
 
-            query.on('row', (result) => {                   
-                let campagne = new Campagne(result.id,result.nom,result.niveau,result.indice,result.serie,result.date_conseil,result.date_debut,result.date_fin);                
-                let question = new Question(result.ordre_question,result.intitule_principal,result.intitule_secondaire,result.type,
-                result.est_actif,result.est_obligatoire,result.est_global,result.ordre_proposition,result.libelle)
-                results = campagne;
-                console.log(question)
-                questions.push(question);
+            query.on('row', (result) => {
+                if(first){
+                    campagne = new Campagne(result.id,result.nom,result.niveau,result.indice,result.serie,result.date_conseil,result.date_debut,result.date_fin);                    
+                    first = false
+                }
+
+                if(first || curQuestion.id !== result.qpid){                                      
+                    curQuestion = new Question(result.qid,result.ordre_question,result.intitule_principal,result.intitule_secondaire,result.type,
+                    result.est_actif,result.est_obligatoire,result.est_global)
+                    questions.push(curQuestion)                                                
+                }
+                curQuestion.propositions.push({"ordre":result.ordre_proposition,"libelle":result.libelle})  
             })
 
             query.on('end', () => {
-                results.questions = questions
+                campagne.questions = questions
                 pg.end();
-                callback(200,results,null);
+                callback(200,campagne,null);
             });
         });
     }
