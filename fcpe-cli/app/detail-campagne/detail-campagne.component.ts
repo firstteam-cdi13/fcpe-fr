@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CampagneService } from '../campagne.service'
 
 @Component({
   selector: 'app-detail-campagne',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailCampagneComponent implements OnInit {
 
-  constructor() { }
+  constructor(private campagneService: CampagneService) { }
+
 
   ngOnInit() {
+    // jas: à adapter, provient de rechercheCampagne
+    //   this.campagneService.listerNomCampagne().subscribe(
+    //     datas => {
+    //       this.listeNomCampagne = datas;
+    //     },
+    //     err => {
+    //       console.log(err);
+    //       console.log("liste nom campagne erreur");
+    //       //this.erreur = { message: err };
+    //     });
   }
-
 }

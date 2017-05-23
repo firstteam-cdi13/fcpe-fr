@@ -38,6 +38,7 @@ export class CampagneService {
           campagne.id = obj.id;
           campagne.nom = obj.nom;
           campagne.nomClasse = obj.nomClasse;
+          campagne.nomConseil=obj.nomConseil;
           campagne.dateConseil = obj.dateConseil;
           campagne.statut = obj.statut;
           campagne.statutLib = obj.statutLib;

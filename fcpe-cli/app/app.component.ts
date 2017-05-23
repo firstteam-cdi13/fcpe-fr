@@ -23,4 +23,7 @@ export class AppComponent implements OnInit {
     console.log("AppComponent ngOnInit");
     // this.ModuleService.getContacts().subscribe(data => {this.contacts = data});    
   }
+
+  
+  
 }
