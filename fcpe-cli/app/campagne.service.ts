@@ -38,13 +38,13 @@ export class CampagneService {
           campagne.id = obj.id;
           campagne.nom = obj.nom;
           campagne.nomClasse = obj.nomClasse;
-          campagne.nomConseil=obj.nomConseil;
+          campagne.nomConseil = obj.nomConseil;
           campagne.dateConseil = obj.dateConseil;
           campagne.statut = obj.statut;
           campagne.statutLib = obj.statutLib;
           liste.push(campagne);
         }
-        console.log ("liste filtree",liste)
+        console.log("liste filtree", liste)
         return liste;
       })
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
@@ -73,5 +73,28 @@ export class CampagneService {
     console.log("CLI: appel service supprimerCampagne");
     let url = '/api/campagnes/' + campagne.id;
     return this.http.delete(url);
+  }
+
+  public visualiser(id): Observable<Campagne> {
+    let url = '/api/campagnes/' + id;
+
+    return this.http.get(url, this.options)
+      .map((res: Response) => {
+        console.log("res.json", res.json())
+        let obj=res.json();
+        let campagne: Campagne = new Campagne();
+        campagne.id = obj.id;
+        campagne.nom = obj.nom;
+        campagne.nomClasse = obj.nomClasse;
+        campagne.nomConseil = obj.nomConseil;
+        campagne.debut= obj.debut;
+        campagne.fin=obj.fin;
+        campagne.dateConseil = obj.dateConseil;
+        campagne.statut = obj.statut;
+        campagne.statutLib = obj.statutLib;
+        campagne.questions = obj.questions;
+        return campagne;
+      })
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 }

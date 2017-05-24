@@ -1,8 +1,10 @@
-<!--<div class="row">
+<div class="row">
   <div class="col-md-10">
     <section id="campagne">
       <h2>Campagne</h2>
-
+      <div class="alert alert-danger" role="alert" *ngIf="erreur != null">
+        <p> {{erreur.message}}</p>
+      </div>
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Propriétés d'une campagne</h3>
@@ -10,25 +12,25 @@
         <div class="panel-body form-horizontal">
           <div class="form-group">
             <label class="col-md-2 control-label">Nom</label>
-            <div class="col-md-10">{{campagne.nom}}</div>
+            <div class="col-md-10 aligneCampagne">{{campagne.nom}}</div>
           </div>
 
           <div class="form-group">
             <label class="col-md-2 control-label">Debut</label>
-            <div class="col-md-4">{{campagne.dateDebut| date : 'dd/MM/yyyy'}}</div>
+            <div class="col-md-4 aligneCampagne">{{campagne.debut| date : 'dd/MM/yyyy'}}</div>
             <label class="col-md-2 control-label">Fin</label>
-            <div class="col-md-4">{{campagne.dateFin| date : 'dd/MM/yyyy'}}</div>
+            <div class="col-md-4 aligneCampagne">{{campagne.fin| date : 'dd/MM/yyyy'}}</div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Classe</label>
-            <div class="col-md-10">{{campagne.nomClasse}}</div>
+            <div class="col-md-10 aligneCampagne">{{campagne.nomClasse}}</div>
           </div>
 
           <div class="form-group">
             <label class="col-md-2 control-label">Conseil</label>
-            <div class="col-md-4">{{campagne.nomConseil}}</div>
+            <div class="col-md-4 aligneCampagne">{{campagne.nomConseil}}</div>
             <label class="col-md-2 control-label">Date de Conseil</label>
-            <div class="col-md-4">{{campagne.dateConseil}}</div>
+            <div class="col-md-4 aligneCampagne">{{campagne.dateConseil| date : 'dd/MM/yyyy'}}</div>
           </div>
 
           <div class="btn-group col-md-offset-10 col-md-2">
@@ -343,4 +345,4 @@
       </div>
     </div>
   </div>
-</div>-->
+</div>
