@@ -12,7 +12,7 @@ class Campagne {
         
         this.getStatut = function() {
             let statut = null;
-            let dateJour = new Date();
+            let dateJour = new Date().setHours(0,0,0,0);
 
             if (dateJour < this.dateDebut) {
                 statut = 0;
@@ -23,6 +23,8 @@ class Campagne {
             else {
                 statut = 1;
             }
+
+            console.log("fcpe-cli - getStatut: dateDebut=" + this.dateDebut + ", dateFin=" +  this.dateFin + ", dateJour=" + dateJour + " => statut=" + statut);
             return statut;
         }
 
