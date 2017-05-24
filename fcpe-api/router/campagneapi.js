@@ -11,29 +11,46 @@ const campagneService = new CampagneService();
 
 
 router.get('/listeNomCampagne', (req, res) => {
-	campagneService.restituerListeNomCampagne((response)=>{
-		res.status(200)
-		res.json(response);
+	campagneService.restituerListeNomCampagne((code,response,errmsg)=>{
+		res.status(code)
+		errmsg ? res.json(msg) : res.json(response);
 	});
 });
 
 router.get('/listeCampagneFiltree', (req, res) => {
 	let nom = req.query['nom']
 	let statut = req.query['statut']	
-	campagneService.restituerListeCampagneFiltree(nom,statut,(response)=>{
-		res.status(200);
-		res.json(response);
+	campagneService.restituerListeCampagneFiltree(nom,statut,(code,response,errmsg)=>{
+		res.status(code)
+		errmsg ? res.json(msg) : res.json(response);
 	});
+});
+
+router.get('/:id', (req, res) => {
+	let cid = req.params.id
+	if(Number.isInteger(cid)){
+		campagneService.restituerCampagne(cid,(code,response,errmsg)=>{
+		res.status(code)
+		errmsg ? res.json(msg) : res.json(response);
+		});
+	}else{
+		res.status(404)
+		res.json({"msg":"URL non valide"});  
+	}
 });
 
 router.delete('/:id', (req, res) => {
 	let id = req.params.id
-	campagneService.supprimerCampagne(id,(response)=>{
-		res.status(200)
-		res.json(response);
+	campagneService.supprimerCampagne(id,(code,response,msg)=>{
+		res.status(code)
+		res.json(msg)
 	});
 })
 
+router.get('*', function(req, res){
+	res.status(404)
+	res.json({"msg":"URL non valide"});  
+});
 
 
 module.exports = router;
