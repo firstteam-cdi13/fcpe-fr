@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section {
+    width: 30vw;
+    height: 70vh;
+}
