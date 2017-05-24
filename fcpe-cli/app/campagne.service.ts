@@ -80,7 +80,6 @@ export class CampagneService {
 
     return this.http.get(url, this.options)
       .map((res: Response) => {
-        console.log("res.json", res.json())
         let obj=res.json();
         let campagne: Campagne = new Campagne();
         campagne.id = obj.id;

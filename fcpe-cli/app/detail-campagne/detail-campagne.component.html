@@ -45,7 +45,7 @@
               <tr>
                 <th>Ordre</th>
                 <th>Intitulé<br/>Principal / Secondaire</th>
-                <th>Type de Propositions</th>
+                <th>Type / Propositions</th>
                 <th>Local</th>
                 <th>Obligatoire</th>
                 <th>Statut</th>
@@ -53,54 +53,26 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
+              <tr *ngFor="let question of campagne.questions">
+                <td>{{question.ordre}}</td>
                 <td>
-                  1: Avez-vous une Question ?
-                  <br/> 2: Si oui, pourquoi ?
+                  <span *ngIf="question.intitule_principal">1: {{question.intitule_principal}}</span>
+                  <span *ngIf="question.intitule_secondaire"><br/> 2: {{question.intitule_secondaire}}</span>
                 </td>
-                <td>Oui<br/>Non</td>
-                <td>Local</td>
-                <td>Non</td>
-                <td>Actif</td>
-                <td>
+                <td>{{question.typeLibelle}}
+                  <span *ngFor="let proposition of question.propositions"><br/>{{proposition.libelle}}</span>
+                </td>
+                <td><span class="glyphicon glyphicon-ok text-success" *ngIf="question.est_global == true"></span></td>
+                <td><span class="glyphicon glyphicon-remove text-danger" *ngIf="question.est_global == false"></span></td>
+                <td><span class="glyphicon glyphicon-ok text-success" *ngIf="question.est_obligatoire == true"></span></td>
+                <td><span class="glyphicon glyphicon-remove text-danger" *ngIf="question.est_obligatoire == false"></span></td>
+                <td><span class="glyphicon glyphicon-ok text-success" *ngIf="question.est_actif == true"></span></td>
+                <td><span class="glyphicon glyphicon-remove text-danger" *ngIf="question.est_actif == false"></span></td>                <td>
                   <div class="btn-group">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#editerQuestion"><span class="glyphicon glyphicon-zoom-in"></span></button>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerQuestion"><span class="glyphicon glyphicon-remove"></span></button>
                   </div>
                 </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Avez-vous une autre question ?</td>
-                <td>Texte libre</td>
-                <td>Générique</td>
-                <td>Oui</td>
-                <td>Inactif</td>
-                <td>
-                  <div class="btn-group">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#editerQuestion"><span class="glyphicon glyphicon-zoom-in"></span></button>
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerQuestion"><span class="glyphicon glyphicon-remove"></span></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>&nbsp;</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td colspan="2"></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>&nbsp;</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td colspan="2"></td>
               </tr>
             </tbody>
             <tfoot>

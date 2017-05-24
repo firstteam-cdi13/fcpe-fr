@@ -7,6 +7,7 @@ export class Question {
     est_actif: boolean = null;
     est_obligatoire: boolean = null;
     est_global: boolean = null;
+    typeLibelle: string = "";
     propositions: {
         ordre: number;
         libelle: string;

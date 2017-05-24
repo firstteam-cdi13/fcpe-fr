@@ -6,6 +6,7 @@ class Campagne {
         this.niveau
         this.indice
         this.serie
+        this.nomConseil
         this.dateConseil
         this.dateDebut
         this.dateFin

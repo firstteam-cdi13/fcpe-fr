@@ -29,7 +29,6 @@ router.get('/listeCampagneFiltree', (req, res) => {
 router.get('/:id', (req, res) => {
 
 	let cid = req.params.id;
-	console.log("fcpe-cli : GET campagne id=" + cid);
 
 	if(cid.match('\\d+')){
 		campagneService.restituerCampagne(cid,(code,response,errmsg)=>{

@@ -26,13 +26,12 @@ export class DetailCampagneComponent implements OnInit {
       this.campagneService.visualiser(this.idCampagne).subscribe(
         datas => {
           this.campagne = datas;
+          console.log("campagne",this.campagne);
         },
         err => {
           console.log(err);
           this.erreur = { message: "Echec d'affichage de la campagne" };
         });
     });
-
-
   }
 }
