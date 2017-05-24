@@ -20,6 +20,9 @@ class CampagneService {
     }
 
     restituerListeCampagneFiltree (nom, statut, callback) {
+
+        console.log("fcpe-cli - restituerListeCampagneFiltree: nom=" + nom + ", statut=" + statut);
+
         // Si le nom n'est pas spécifié on remplace undefined par une chaine vide 
         // pour éviter un  LIKE %undefined% dans la requête
         if (!nom){nom = ''}
