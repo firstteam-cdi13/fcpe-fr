@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+body{color:#545454}
+
+h1{font-size:1.4em}
+
+h2{font-size:1.2em;margin-top:0px}
+
+h3{font-size:1em}
+
+ul.breacrumb{margin-bottom:0px;padding-bottom: 0px}
+
+footer lul{padding:0px}
+
+.table-responsive{min-height:100px}
+
+.panel{
+    background:#efefef;
+    border-color : #ecbfe6;
+    }
+
+.panel-heading{
+    color: #545454;
+    border-bottom-color: #ecbfe6    
+}
+
+.btn-primary{
+    background:#b665a0;
+    border-color:#633857
+}
+
+.btn-primary:hover{
+    background:#633857;
+    border-color:#633857
+}
+
+
+

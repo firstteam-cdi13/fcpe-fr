@@ -17,6 +17,9 @@ coverage
 #angular dist
 dist
 
+#Selenium errorShots
+errorShots
+
 # nyc test coverage
 .nyc_output
 
