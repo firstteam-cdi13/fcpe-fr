@@ -62,12 +62,13 @@
                 <td>{{question.typeLibelle}}
                   <span *ngFor="let proposition of question.propositions"><br/>{{proposition.libelle}}</span>
                 </td>
-                <td><span class="glyphicon glyphicon-ok text-success" *ngIf="question.est_global == true"></span></td>
-                <td><span class="glyphicon glyphicon-remove text-danger" *ngIf="question.est_global == false"></span></td>
-                <td><span class="glyphicon glyphicon-ok text-success" *ngIf="question.est_obligatoire == true"></span></td>
-                <td><span class="glyphicon glyphicon-remove text-danger" *ngIf="question.est_obligatoire == false"></span></td>
-                <td><span class="glyphicon glyphicon-ok text-success" *ngIf="question.est_actif == true"></span></td>
-                <td><span class="glyphicon glyphicon-remove text-danger" *ngIf="question.est_actif == false"></span></td>                <td>
+                <td *ngIf="question.est_global == true"><span class="glyphicon glyphicon-ok text-success"></span></td>
+                <td *ngIf="question.est_global == false || question.est_global == undefined"><span class="glyphicon glyphicon-remove text-danger"></span></td>
+                <td *ngIf="question.est_obligatoire == true"><span class="glyphicon glyphicon-ok text-success"></span></td>
+                <td *ngIf="question.est_obligatoire == false || question.est_obligatoire == undefined"><span class="glyphicon glyphicon-remove text-danger"></span></td>
+                <td *ngIf="question.est_actif == true"><span class="glyphicon glyphicon-ok text-success"></span></td>
+                <td *ngIf="question.est_actif == false || question.est_actif == undefined"><span class="glyphicon glyphicon-remove text-danger"></span></td>
+                <td>
                   <div class="btn-group">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#editerQuestion"><span class="glyphicon glyphicon-zoom-in"></span></button>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerQuestion"><span class="glyphicon glyphicon-remove"></span></button>
@@ -87,7 +88,7 @@
 									</button>
           </div>
           <div class="col-md-offset-6 col-md-2">
-            <p>(x) question(s)</p>
+            <p>{{campagne.questions.length}} question(s)</p>
           </div>
         </div>
 
@@ -239,7 +240,7 @@
             <label class="col-md-2 control-label">Origine</label>
             <div class="col-md-3">
               <label for="question.origine.general" class="radio-inline">
-									<input type="radio" id="question.origine.general" name=""question.origine"" value="0">Général</label>
+									<input type="radio" id="question.origine.general" name="question.origine" value="0">Général</label>
               <label for="question.origine.local" class="radio-inline">
 									<input type="radio" id="question.origine.local" name="question.origine" value="1" checked>Local</label>
             </div>

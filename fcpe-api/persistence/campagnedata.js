@@ -91,7 +91,8 @@ class CampagneData {
             LEFT OUTER JOIN question q on q.id = cq.id_question
             LEFT OUTER JOIN questionproposition qp on qp.id = q.id 
             LEFT OUTER JOIN proposition pr on pr.id = qp.id_proposition
-            WHERE c.id=${cid}`
+            WHERE c.id=${cid}
+            ORDER BY ordre_question,ordre_proposition`
 
             const query = client.query(queryString)
             let curQuestion = {}
@@ -113,20 +114,29 @@ class CampagneData {
                 // Si on traite la premiere ligne de retour ou que l'id question change dans les propositions
                 // on crée un nouvelle question
                 if (first || curQuestion.id !== result.qpid) {
-                    curQuestion = new Question()
-                    curQuestion.id = result.qid
-                    curQuestion.ordre = result.ordre_question
-                    curQuestion.intitule_principal = result.intitule_principal
-                    curQuestion.intitule_secondaire = result.intitule_secondaire
-                    curQuestion.type = result.type
-                    curQuestion.est_actif = result.est_actif
-                    curQuestion.est_obligatoire = result.est_obligatoire
-                    curQuestion.est_global = result.est_global
-                    curQuestion.propositions = []
-                    questions.push(curQuestion)
-                    console.log(curQuestion)
+                    //jas: Si il n'y a aucune question, on initialise le tableau des questions à vide
+                    //aucune question = identifiant question à vide
+                    if (result.qid == null) {
+                        questions = []
+                    }
+                    else {
+                        curQuestion = new Question()
+                        curQuestion.id = result.qid
+                        curQuestion.ordre = result.ordre_question
+                        curQuestion.intitule_principal = result.intitule_principal
+                        curQuestion.intitule_secondaire = result.intitule_secondaire
+                        curQuestion.type = result.type
+                        curQuestion.est_actif = result.est_actif
+                        curQuestion.est_obligatoire = result.est_obligatoire
+                        curQuestion.est_global = result.est_global
+                        curQuestion.propositions = []
+                        questions.push(curQuestion)
+                    }
                 }
-                curQuestion.propositions.push({ "ordre": result.ordre_proposition, "libelle": result.libelle })
+                //S'il n'y a aucune proposition, tableau proposition à vide
+                if (result.ordre_proposition != null) {
+                    curQuestion.propositions.push({ "ordre": result.ordre_proposition, "libelle": result.libelle })
+                }
             })
 
             query.on('end', () => {

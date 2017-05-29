@@ -10,7 +10,7 @@ export class Campagne {
     dateConseil: Date = null;
     statut: number = 0;
     statutLib: string = "";
-    questions: Question[];
+    questions: Question[]=[];
     constructor() {
     }
 }

@@ -21,7 +21,7 @@ class CampagneService {
 
     restituerListeCampagneFiltree(nom, statut, callback) {
 
-        console.log("fcpe-cli - restituerListeCampagneFiltree: nom=" + nom + ", statut=" + statut);
+        //console.log("fcpe-cli - restituerListeCampagneFiltree: nom=" + nom + ", statut=" + statut);
 
         // Si le nom n'est pas spécifié on remplace undefined par une chaine vide 
         // pour éviter un  LIKE %undefined% dans la requête
@@ -47,14 +47,14 @@ class CampagneService {
 
     restituerCampagne(cid, callback) {
         this.cData.restituerCampagne(cid, (code, campagne, errmsg) => {
-            
-            //Ajout du libellé type aux questions
-            let campagneQuestionsBis=campagne.questions;
 
-            for (let questionBis of campagneQuestionsBis){
-                questionBis.typeLibelle= questionBis.getTypeLibelle();
+            //Ajout du libellé type aux questions
+            let campagneQuestionsBis = campagne.questions;
+
+            for (let questionBis of campagneQuestionsBis) {
+                questionBis.typeLibelle = questionBis.getTypeLibelle();
             }
-            
+
             let obj = {
                 id: campagne.id,
                 nom: campagne.nom,

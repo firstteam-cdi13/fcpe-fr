@@ -25,7 +25,7 @@ class Campagne {
                 statut = 1;
             }
 
-            console.log("fcpe-cli - getStatut: dateDebut=" + this.dateDebut + ", dateFin=" +  this.dateFin + ", dateJour=" + dateJour + " => statut=" + statut);
+            //console.log("fcpe-cli - getStatut: dateDebut=" + this.dateDebut + ", dateFin=" +  this.dateFin + ", dateJour=" + dateJour + " => statut=" + statut);
             return statut;
         }
 
