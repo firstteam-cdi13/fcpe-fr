@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "node ./fcpe-api/server.js",
-    "test": "ng test a revoir jasmin",
+    "testunit": "mocha test",
+    "testint": "concurrently \"node ./fcpe-api/server.js\" \"./node_modules/.bin/wdio wdio.conf.js\"",
     "lint": "ng lint",
     "build": "ng build && node ./fcpe-api/server.js",
     "e2e": "ng e2e",
