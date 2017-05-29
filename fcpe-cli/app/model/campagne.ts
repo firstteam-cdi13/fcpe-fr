@@ -1,11 +1,16 @@
-export class Campagne {
-    id: number;
-    nom: string;
-    nomClasse: string;
-    nomConseil:string;
-    dateConseil: Date;
-    statut: number;
-    statutLib: string;
+import { Question } from './question';
 
-    constructor() {}
+export class Campagne {
+    id: number = 0;
+    nom: string = "";
+    nomClasse: string = "";
+    nomConseil: string = "";
+    debut: Date = null;
+    fin: Date = null;
+    dateConseil: Date = null;
+    statut: number = 0;
+    statutLib: string = "";
+    questions: Question[];
+    constructor() {
+    }
 }
