@@ -13,12 +13,11 @@
             <h3 class="panel-title">Recherche campagne</h3>
           </div>
           <div class="panel-body">
-            <form class="form-horizontal">
+            <form class="form-horizontal rechCampagne">
               <div class="form-group">
                 <label for="campagne.nom" class="col-md-2 control-label">Nom</label>
                 <div class="col-md-10">
-                  <input list="campagne.nom.list" type="text" [(ngModel)]="campagneCriteres.nom" class="form-control" id="campagne.nom" name="campagne.nom"
-                    placeholder="Saisissez un nom">
+                  <input list="campagne.nom.list" type="text" [(ngModel)]="campagneCriteres.nom" class="form-control campagneNom" id="campagne.nom" name="campagne.nom" placeholder="Saisissez un nom">
                   <datalist id="campagne.nom.list">
                     <option value="{{nomCampagne.nom}}" *ngFor="let nomCampagne of listeNomCampagne">
                   </datalist>
@@ -49,7 +48,7 @@
             <h2 class="panel-title">{{campagnes.length}} campagne(s)</h2>
           </div>
           <div class="table-responsive">
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover results">
               <thead>
                 <tr>
                   <th>Nom</th>
