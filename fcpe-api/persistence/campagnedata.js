@@ -35,7 +35,7 @@ class CampagneData {
     }
 
     restituerListeCampagneFiltree(nom, statut, callback) {
-        let results = [];
+        let results = [];npm st
         pg.connect(connectionString, (err, client, done) => {
             if (err) {
                 done();
