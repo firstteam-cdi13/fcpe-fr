@@ -1,8 +1,10 @@
-<!--<div class="row">
+<div class="row">
   <div class="col-md-10">
     <section id="campagne">
       <h2>Campagne</h2>
-
+      <div class="alert alert-danger" role="alert" *ngIf="erreur != null">
+        <p> {{erreur.message}}</p>
+      </div>
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Propriétés d'une campagne</h3>
@@ -10,25 +12,25 @@
         <div class="panel-body form-horizontal">
           <div class="form-group">
             <label class="col-md-2 control-label">Nom</label>
-            <div class="col-md-10">{{campagne.nom}}</div>
+            <div class="col-md-10 aligneCampagne">{{campagne.nom}}</div>
           </div>
 
           <div class="form-group">
             <label class="col-md-2 control-label">Debut</label>
-            <div class="col-md-4">{{campagne.dateDebut| date : 'dd/MM/yyyy'}}</div>
+            <div class="col-md-4 aligneCampagne">{{campagne.debut| date : 'dd/MM/yyyy'}}</div>
             <label class="col-md-2 control-label">Fin</label>
-            <div class="col-md-4">{{campagne.dateFin| date : 'dd/MM/yyyy'}}</div>
+            <div class="col-md-4 aligneCampagne">{{campagne.fin| date : 'dd/MM/yyyy'}}</div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Classe</label>
-            <div class="col-md-10">{{campagne.nomClasse}}</div>
+            <div class="col-md-10 aligneCampagne">{{campagne.nomClasse}}</div>
           </div>
 
           <div class="form-group">
             <label class="col-md-2 control-label">Conseil</label>
-            <div class="col-md-4">{{campagne.nomConseil}}</div>
+            <div class="col-md-4 aligneCampagne">{{campagne.nomConseil}}</div>
             <label class="col-md-2 control-label">Date de Conseil</label>
-            <div class="col-md-4">{{campagne.dateConseil}}</div>
+            <div class="col-md-4 aligneCampagne">{{campagne.dateConseil| date : 'dd/MM/yyyy'}}</div>
           </div>
 
           <div class="btn-group col-md-offset-10 col-md-2">
@@ -43,7 +45,7 @@
               <tr>
                 <th>Ordre</th>
                 <th>Intitulé<br/>Principal / Secondaire</th>
-                <th>Type de Propositions</th>
+                <th>Type / Propositions</th>
                 <th>Local</th>
                 <th>Obligatoire</th>
                 <th>Statut</th>
@@ -51,54 +53,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
+              <tr *ngFor="let question of campagne.questions">
+                <td>{{question.ordre}}</td>
                 <td>
-                  1: Avez-vous une Question ?
-                  <br/> 2: Si oui, pourquoi ?
+                  <span *ngIf="question.intitule_principal">1: {{question.intitule_principal}}</span>
+                  <span *ngIf="question.intitule_secondaire"><br/> 2: {{question.intitule_secondaire}}</span>
                 </td>
-                <td>Oui<br/>Non</td>
-                <td>Local</td>
-                <td>Non</td>
-                <td>Actif</td>
-                <td>
-                  <div class="btn-group">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#editerQuestion"><span class="glyphicon glyphicon-zoom-in"></span></button>
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerQuestion"><span class="glyphicon glyphicon-remove"></span></button>
-                  </div>
+                <td>{{question.typeLibelle}}
+                  <span *ngFor="let proposition of question.propositions"><br/>{{proposition.libelle}}</span>
                 </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Avez-vous une autre question ?</td>
-                <td>Texte libre</td>
-                <td>Générique</td>
-                <td>Oui</td>
-                <td>Inactif</td>
+                <td *ngIf="question.est_global == true"><span class="glyphicon glyphicon-ok text-success"></span></td>
+                <td *ngIf="question.est_global == false || question.est_global == undefined"><span class="glyphicon glyphicon-remove text-danger"></span></td>
+                <td *ngIf="question.est_obligatoire == true"><span class="glyphicon glyphicon-ok text-success"></span></td>
+                <td *ngIf="question.est_obligatoire == false || question.est_obligatoire == undefined"><span class="glyphicon glyphicon-remove text-danger"></span></td>
+                <td *ngIf="question.est_actif == true"><span class="glyphicon glyphicon-ok text-success"></span></td>
+                <td *ngIf="question.est_actif == false || question.est_actif == undefined"><span class="glyphicon glyphicon-remove text-danger"></span></td>
                 <td>
                   <div class="btn-group">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#editerQuestion"><span class="glyphicon glyphicon-zoom-in"></span></button>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#confirmerSupprimerQuestion"><span class="glyphicon glyphicon-remove"></span></button>
                   </div>
                 </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>&nbsp;</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td colspan="2"></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>&nbsp;</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td colspan="2"></td>
               </tr>
             </tbody>
             <tfoot>
@@ -113,7 +88,7 @@
 									</button>
           </div>
           <div class="col-md-offset-6 col-md-2">
-            <p>(x) question(s)</p>
+            <p>{{campagne.questions.length}} question(s)</p>
           </div>
         </div>
 
@@ -265,7 +240,7 @@
             <label class="col-md-2 control-label">Origine</label>
             <div class="col-md-3">
               <label for="question.origine.general" class="radio-inline">
-									<input type="radio" id="question.origine.general" name=""question.origine"" value="0">Général</label>
+									<input type="radio" id="question.origine.general" name="question.origine" value="0">Général</label>
               <label for="question.origine.local" class="radio-inline">
 									<input type="radio" id="question.origine.local" name="question.origine" value="1" checked>Local</label>
             </div>
@@ -343,4 +318,4 @@
       </div>
     </div>
   </div>
-</div>-->
+</div>
