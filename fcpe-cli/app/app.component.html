@@ -1,7 +1,7 @@
-<app-header [visibiliteBlocUtilisateur]="visibiliteBlocUtilisateur"></app-header>
-<app-nav></app-nav>
+<app-header></app-header>
+<app-nav *ngIf="router.url != '/authenticate'"></app-nav>
 <main>
   <!-- <app-recherche-campagne></app-recherche-campagne> -->
-  <router-outlet></router-outlet>
+  <router-outlet></router-outlet>   
 </main>
 <app-footer></app-footer>
