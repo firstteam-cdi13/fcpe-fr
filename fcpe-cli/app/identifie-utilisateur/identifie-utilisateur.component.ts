@@ -13,6 +13,8 @@ export class IdentifieUtilisateurComponent implements OnInit {
   loading = false;
   returnUrl: string;
 
+  erreur: any=null;
+
   identifiant : string;
   motDePasse : string;
 
@@ -27,6 +29,7 @@ export class IdentifieUtilisateurComponent implements OnInit {
 
       // get return url from route parameters or default to '/'
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+      
   }
 
   public connecter(){
@@ -34,11 +37,17 @@ export class IdentifieUtilisateurComponent implements OnInit {
     let authentifie = this.authService.connecter(this.identifiant, this.motDePasse);
 
     if (authentifie) {
-      this.router.navigate([this.returnUrl]);
+      // this.router.navigate([this.returnUrl]);
+      // let redirect = this.route.data['redirect'];
+      // console.log("connecter - authentifie : " + redirect);
+      // this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/');
+      // this.router.navigate([redirect]);
     }
     else {
       console.log("erreur authentification");
       this.loading = false;
+      this.erreur = { message: "Echec d'authentification !" };
     }
     
   }

@@ -25,7 +25,7 @@ export class AuthService {
   public connecter(identifiant :string, motDePasse: string) {
     console.log("fcpe-cli - AuthService.connecter: login=" + identifiant + ", password=" + motDePasse);
     let authorise = false;
-    if (identifiant == 'fcpe' && motDePasse == 'jdeg'){
+    if (identifiant == 'gruby' && motDePasse == '123456'){
       let utilisateur = new Utilisateur();
       utilisateur.identifiant=identifiant;
       localStorage.setItem('utilisateurConnecte', JSON.stringify(utilisateur));
@@ -50,6 +50,7 @@ export class AuthService {
   }
 
   public deconnecter() {
+    console.log("deconnecter");
     localStorage.removeItem('utilisateurConnecte');
   }
 

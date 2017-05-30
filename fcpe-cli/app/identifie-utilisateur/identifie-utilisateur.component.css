@@ -1,17 +1,18 @@
 @charset "UTF-8";
 
+section {
+    display: flex;
+    display: -webkit-flex; 
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    height: 40vh;
+}
+
 footer {
     position: absolute;
     bottom: 0;
-}
-
-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-section {
-    width: 30vw;
-    height: 70vh;
 }

@@ -14,12 +14,18 @@ export class CanActivateViaAuthGuard implements CanActivate {
   // }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+
         if (this.authService.verifierUtilisateur()) {
             // logged in so return true
             return true;
         }
         else {
-          this.router.navigate(['/authenticate'], { queryParams: { returnUrl: state.url }});
+            let redirect = route.data['redirect'];
+            console.log("canActivate - authentifie : " + redirect);
+            //  this.router.navigateByUrl([redirect]);
+            this.router.navigate(['/authenticate']);
+             
+        //   this.router.navigate(['/authenticate'], { queryParams: { returnUrl: state.url }});
           return false;
         }
  

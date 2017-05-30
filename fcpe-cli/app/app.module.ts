@@ -18,9 +18,10 @@ import { AideComponent } from './aide/aide.component';
 import { RechercheCampagneComponent } from './recherche-campagne/recherche-campagne.component';
 import { DetailCampagneComponent } from './detail-campagne/detail-campagne.component';
 import { IdentifieUtilisateurComponent } from './identifie-utilisateur/identifie-utilisateur.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AppComponent, canActivate: [CanActivateViaAuthGuard]},
+  { path: '', component: AccueilComponent, canActivate: [CanActivateViaAuthGuard]},
   { path: 'authenticate', component: IdentifieUtilisateurComponent},
   { path: 'campagnes', component: RechercheCampagneComponent , canActivate: [CanActivateViaAuthGuard]},
   { path: 'campagnes/:id', component: DetailCampagneComponent, canActivate: [CanActivateViaAuthGuard]},
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     AideComponent,
     RechercheCampagneComponent,
     DetailCampagneComponent,
-    IdentifieUtilisateurComponent
+    IdentifieUtilisateurComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
