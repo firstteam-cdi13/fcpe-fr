@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CampagneService } from './campagne.service';
+import { AuthService } from './auth.service';
+
+import { CanActivateViaAuthGuard } from './can-activate-via-auth.guard';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,11 +17,21 @@ import { FavorisComponent } from './favoris/favoris.component';
 import { AideComponent } from './aide/aide.component';
 import { RechercheCampagneComponent } from './recherche-campagne/recherche-campagne.component';
 import { DetailCampagneComponent } from './detail-campagne/detail-campagne.component';
+import { IdentifieUtilisateurComponent } from './identifie-utilisateur/identifie-utilisateur.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 const appRoutes: Routes = [
-  { path: 'campagnes', component: RechercheCampagneComponent },
-  { path: 'campagnes/:id', component: DetailCampagneComponent },
+  { path: '', component: AccueilComponent, canActivate: [CanActivateViaAuthGuard]},
+  { path: 'authenticate', component: IdentifieUtilisateurComponent},
+  { path: 'campagnes', component: RechercheCampagneComponent , canActivate: [CanActivateViaAuthGuard]},
+  { path: 'campagnes/:id', component: DetailCampagneComponent, canActivate: [CanActivateViaAuthGuard]},
+  { path: '**', redirectTo: '' }
 ];
+
+// const APP_ROUTER_PROVIDERS = [
+//     CanActivateViaAuthGuard,
+//     provideRouter(AppRoutes)
+// ];
 
 @NgModule({
   declarations: [
@@ -29,7 +42,9 @@ const appRoutes: Routes = [
     FavorisComponent,
     AideComponent,
     RechercheCampagneComponent,
-    DetailCampagneComponent
+    DetailCampagneComponent,
+    IdentifieUtilisateurComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +52,10 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CampagneService],
+  providers: [
+    AuthService,
+    CampagneService,
+    CanActivateViaAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

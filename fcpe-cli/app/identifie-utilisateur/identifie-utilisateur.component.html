@@ -1,0 +1,13 @@
+<section>
+     <div class="alert alert-danger" role="alert" *ngIf="erreur != null">
+        <p> {{erreur.message}}</p>
+      </div>
+    <form class="form-signin">
+        <h2 class="form-signin-heading">Identifiez-vous</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" [(ngModel)]="identifiant" [ngModelOptions]="{standalone: true}" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" [(ngModel)]="motDePasse" [ngModelOptions]="{standalone: true}" id="inputPassword" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="connecter()">Connecter</button>
+    </form>
+</section>
