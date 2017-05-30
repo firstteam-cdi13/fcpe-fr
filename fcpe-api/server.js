@@ -18,8 +18,8 @@ app.use(express.static(path.join(__dirname, '/../dist')));
 fs.readdirSync('fcpe-api/router/').forEach(function (file) {
     if (file.substr(-3) == '.js') {
         route = require('./router/' + file);
-        //Nom fichier sans nom api.js et mis au pluriel
-        let file2 = file.slice(0, -6) + 's';
+        //Nom fichier sans nom api.js
+        let file2 = file.slice(0, -6)
         app.use('/api/' + file2, route);
     }
 });

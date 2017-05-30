@@ -5,7 +5,7 @@ describe('FCPE', function() {
         var title = browser.getTitle();
         assert.equal(title, 'FcpeFr');
     });*/
-    it('doit trouver la bonne campagne', function () {
+    it('doit trouver la bonne campagne', function () {// Broken ajouter ident
         browser.url('http://localhost:5000');
         browser.element('#myNavbar').click('a*=Gestion des campagnes')
         browser.element('#myNavbar').click('a*=Rechercher une campagne')
@@ -17,15 +17,5 @@ describe('FCPE', function() {
 });
 
 
-/*const webdriver = require('selenium-webdriver');
-
-const driver = new webdriver.Builder()
-    .forBrowser('firefox')
-    .build();
-
-driver.navigate().to('http://localhost:5000/')
-    .then(() => driver.findElement(By.css('title')))
-    .then(element => element.getAttribute('value'))
-    .then(value => console.log(value));*/
 
 
