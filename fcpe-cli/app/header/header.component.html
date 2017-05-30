@@ -1,19 +1,19 @@
 <header>		
-			<div class="row">
-  				<div class="col-md-9">
-					<div class="logo">&nbsp;</div>
-					<h1>
-						<img src="resources/img/logo-imie.png"/>
-						FCPE<br />
-						<span>Préparation des conseils de classe</span>
-					</h1>
-				</div>
-  				<div class="col-md-3 lead" *ngIf="visibiliteBlocUtilisateur">
-					<br/>
-					<div class="utilisateur">
-						<span class="glyphicon glyphicon-user"></span>&nbsp; Dark Vador
-						<button class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span></button>
-					</div>
-				</div>
+	<div class="row">
+		<div class="col-md-9">
+			<div class="logo">&nbsp;</div>
+			<h1>
+				<img src="resources/img/logo-imie.png"/>
+				FCPE<br />
+				<span>Préparation des conseils de classe</span>
+			</h1>
+		</div>
+		<div class="col-md-3 lead" *ngIf="router.url != '/authenticate'">
+			<br/>
+			<div class="utilisateur">
+				<span class="glyphicon glyphicon-user"></span>&nbsp; Gérard Ruby
+				<button class="btn btn-primary" routerLink="/authenticate"><span class="glyphicon glyphicon-log-out"></span></button>
 			</div>
-		</header>
+		</div>
+	</div>
+</header>
