@@ -25,12 +25,16 @@ footer lul{padding:0px}
 
 .btn-primary{
     background:#b665a0;
-    border-color:#633857
+    border-color:#965183
 }
 
 .btn-primary:hover{
     background:#633857;
-    border-color:#633857
+    border-color:#965183
+}
+
+.utilisateur{
+    margin-top:20px;
 }
 
 
