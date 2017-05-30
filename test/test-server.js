@@ -15,7 +15,7 @@ describe('Routes', function() {
         done();
         });
     });
-    it('GET /api/campagnes/listeNomCampagne \n devrait renvoyer status 200', function(done) {
+/*    it('GET /api/campagnes/listeNomCampagne \n devrait renvoyer status 200', function(done) {
     chai.request(server)
         .get('/api/campagnes/listeNomCampagne')
         .end(function(err, res){
@@ -23,14 +23,14 @@ describe('Routes', function() {
         done();
         });
     });
-    it('GET /api/campagnes/listeNomCampagne \n devrait renvoyer status 200', function(done) {
+    it('GET /api/campagnes/listeCampagneFiltree \n devrait renvoyer status 200', function(done) {
     chai.request(server)
-        .get('/api/campagnes/listeNomCampagne')
+        .get('/api/campagnes/listeCampagneFiltree')
         .end(function(err, res){
         res.should.have.status(200)
         done();
         });
-    });
+    });*/
 /*    it('GET /api/campagnes/listeCampagneFiltree \n devrait renvoyer json => nom:string', function(done) {
     chai.request(server)
         .get('/api/campagnes/listeNomCampagne')
