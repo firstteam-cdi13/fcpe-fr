@@ -6,7 +6,7 @@ var should = chai.should();
 chai.use(chaiHttp);
 
 
-describe('Rechercher Campagne', function() {
+describe('Routes', function() {
     it('GET /api/campagnes/zxyz \n devrait renvoyer 404 URL NON VALIDE', function(done) {
     chai.request(server)
         .get('/api/campagnes/zxyz')
@@ -15,7 +15,23 @@ describe('Rechercher Campagne', function() {
         done();
         });
     });
-    it('GET /api/campagnes/listeNomCampagne \n devrait renvoyer json => nom:string', function(done) {
+/*    it('GET /api/campagnes/listeNomCampagne \n devrait renvoyer status 200', function(done) {
+    chai.request(server)
+        .get('/api/campagnes/listeNomCampagne')
+        .end(function(err, res){
+        res.should.have.status(200)
+        done();
+        });
+    });
+    it('GET /api/campagnes/listeCampagneFiltree \n devrait renvoyer status 200', function(done) {
+    chai.request(server)
+        .get('/api/campagnes/listeCampagneFiltree')
+        .end(function(err, res){
+        res.should.have.status(200)
+        done();
+        });
+    });*/
+/*    it('GET /api/campagnes/listeCampagneFiltree \n devrait renvoyer json => nom:string', function(done) {
     chai.request(server)
         .get('/api/campagnes/listeNomCampagne')
         .end(function(err, res){
@@ -33,5 +49,5 @@ describe('Rechercher Campagne', function() {
         res.body[0].should.have.property('statutLib','En préparation').and.to.be.a('string')
         done();
         });
-    });
+    });*/
 });
