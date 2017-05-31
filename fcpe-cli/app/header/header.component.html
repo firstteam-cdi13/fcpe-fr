@@ -6,7 +6,7 @@
 				<span>Préparation des conseils de classe</span>
 			</h1>
 		</div>
-		<div class="col-md-3 lead" *ngIf="visibiliteBlocUtilisateur">
+		<div class="col-md-3 lead" *ngIf="router.url != '/authenticate'">
 			<div class="utilisateur">
 				<span class="glyphicon glyphicon-user"></span>&nbsp; Dark Vador
 				<button class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span></button>
